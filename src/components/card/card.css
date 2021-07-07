@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap%27');
+
+*{
+  font-family: 'Playfair Display', serif;
+}
+
 .card__wrapper {
   border-radius: 0.35rem;
   padding: 0.5rem;
