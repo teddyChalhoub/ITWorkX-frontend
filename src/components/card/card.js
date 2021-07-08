@@ -41,7 +41,7 @@ const Card = () => {
           <input
             type="button"
             className="button__add-to-card"
-            value="Add to card"
+            value="Add to cart"
           />
         </div>
       </div>
