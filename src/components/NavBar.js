@@ -1,57 +1,55 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { FaShoppingCart } from "react-icons/fa";
 import { BiUserCircle } from "react-icons/bi";
+import Badge from "@material-ui/core/Badge";
+import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
+import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 
-function NavBar() {
+function NavBar({ numberOfItemsInCart }) {
   return (
-    <header>
-      <div className="app__navbar">
-        <div className="app__navbar__img">
-          <img src="./img/LOGO.png" />
-          <input
-            className="app__navbar__input"
-            type="text"
-            placeholder="Search"
-          />
-        </div>
-        <div className="app__navbar__menu">
+    <div>
+      <header>
+        <div className="app__navbar">
+          <div className="app__navbar__img">
+            <img className="logo" src="./img/LOGO.png" />
+            <input
+              className="app__navbar__input"
+              type="text"
+              placeholder="Search"
+            />
+          </div>
           <div className="menu">
-            <Link className="home" to="/">
+            <Link className="home links" to="/">
               Home{" "}
             </Link>
-          </div>
-          <div className="menu">
-            <Link className="store" to="/store">
+            <Link className="store links" to="/store">
               Store{" "}
             </Link>
-          </div>
-          <div className="menu">
-            <Link className="contact-us" to="/contact-us">
+            <Link className="contact-us links" to="/contact-us">
               Contact us{" "}
             </Link>
-          </div>
-          <div className="menu">
-            <Link className="services" to="/services">
+            <Link className="services links" to="/services">
               Services
             </Link>
-          </div>
-          <div className="menu">
-            <Link className="about-us" to="/about-us">
+            <Link className="about-us links" to="/about-us">
               About us{" "}
             </Link>
-          </div>
-          <div className="icons">
-            <div className="cart__icon">
-              <FaShoppingCart size="2em" color="white" />
-            </div>
-            <div className="user__icon">
-              <BiUserCircle size="3.5em" color="white" />
-            </div>
+            <Badge
+              badgeContent={numberOfItemsInCart}
+              color="secondary"
+              className="cart__icon"
+            >
+              <ShoppingCartIcon style={{ fill: "white" }} fontSize="large" />
+            </Badge>
+            <AccountCircleIcon
+              className="user__icon"
+              style={{ fill: "white" }}
+              fontSize="large"
+            />
           </div>
         </div>
-      </div>
-    </header>
+      </header>
+    </div>
   );
 }
 

@@ -1,31 +1,47 @@
 .app__navbar {
   display: flex;
-  background-color: #009688;
-  padding: 1rem;
-  flex-direction: row;
   justify-content: space-evenly;
-  text-decoration: none;
+  padding: 1rem;
+  /* flex-direction: row;
+  text-decoration: none; */
+  background-color: #009688;
   color: black;
 }
 
-img {
-  max-width: 20%;
+.logo {
+  max-width: 15%;
 }
 
+.app__navbar__img {
+  display: flex;
+  flex-wrap: wrap;
+}
 .app__navbar__input {
+  width: 50%;
+  height: 10%;
+  margin: auto 0 auto 1rem;
   background-color: white;
   color: black;
-  padding: 0.5em 0.5em;
-  border-radius: 5px;
+  padding: 0.5em;
+  border: 0;
+  border-radius: 2px;
   outline: none;
 }
 
-.app__navbar__menu menu {
-  display: flex;
-  flex-direction: row;
+.menu {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  width: 50%;
+  height: 50%;
   justify-content: space-evenly;
+  align-self: center;
+}
+
+.links {
   text-decoration: none;
   color: black;
+  align-self: center;
 }
 
 .app__form {
@@ -64,6 +80,7 @@ img {
   padding: 12px 20px;
   border-radius: 4px;
   cursor: pointer;
+  outline: none;
 }
 
 .email:hover {
@@ -86,8 +103,9 @@ img {
   cursor: pointer;
 }
 
-.btn:hover {
-  background-color: white;
+/* .App-logo {
+  height: 40vmin;
+  pointer-events: none;
 }
 
 .app__contact-info {
@@ -108,8 +126,11 @@ img {
   justify-content: space-evenly;
 }
 
-.follow-us,
-.address,
-.contact-1 {
-  margin-bottom: 50px;
-}
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+} */

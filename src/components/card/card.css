@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap%27');
+
+*{
+  font-family: 'Playfair Display', serif;
+}
+
+.card__wrapper {
+  border-radius: 0.35rem;
+  padding: 0.5rem;
+  margin: 0.5rem;
+  width: 15rem;
+}
+
+.card__wrapper:hover{
+  box-shadow:  0 0.438rem 1.875rem -0.625rem #BBBBBB;
+}
+
+.card__wrapper,
+.border__quantity__btn--card,
+.border__quantity--count,
+.quantity button {
+  border: 0.1rem solid #d3d3d3;
+}
+
+.border__quantity__btn--card {
+  border-radius: 0.35rem;
+  padding: 1rem;
+  justify-content: center;
+}
+
+img {
+  width: 100%;
+}
+
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.button__add-to-card {
+  margin: auto 0;
+  padding: 0.5rem;
+  height: 25%;
+  background-color: transparent;
+  border: 1px solid #486b68;
+  background-color: #486b68;
+  color: #fff;
+  border-radius: 0.1rem;
+  cursor: pointer;
+}
+
+.button__add-to-card:hover {
+  background-color: #5c8986;
+  border-color: #5c8986;
+}
+
+.center__price_quantity {
+  width: 50%;
+}
+.center__price_quantity p {
+  margin: 0 0 0.5rem 0;
+}
+
+.center__price_quantity p,
+span {
+  font-size: 0.75rem;
+}
+
+/* -- quantity box -- */
+
+.quantity {
+  height: 50%;
+}
+
+.border__quantity--count {
+  display: block;
+  width: 35%;
+  text-align: center;
+  border-right: 0;
+  border-left: 0;
+  padding: 0.12rem 0 0 0;
+}
+
+.quantity button {
+  background-color: #fff;
+  outline: 0;
+  cursor: pointer;
+}
+
+.quantity button:hover {
+  background-color: #eeeeee;
+  border-color: #eeeeee;
+}
+
+.minus {
+  border-bottom-left-radius: 0.25rem;
+  border-top-left-radius: 0.25rem;
+}
+
+.plus {
+  border-bottom-right-radius: 0.25rem;
+  border-top-right-radius: 0.25rem;
+}
