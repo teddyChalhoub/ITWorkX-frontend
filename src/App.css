@@ -45,7 +45,7 @@
 }
 
 .app__form {
-  margin-right: 10%;
+  width: 100%;
 }
 
 .email,
@@ -53,7 +53,7 @@
 .fname,
 .topic,
 .comment {
-  width: 200%;
+  width: 100%;
   padding: 12px;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -111,7 +111,6 @@
 .app__contact-info {
   background-color: white;
   padding: 15px 30px;
-  margin-left: 10%;
 }
 
 .container__contact-us {
