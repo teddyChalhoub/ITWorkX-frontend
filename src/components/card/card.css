@@ -1,21 +1,17 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap%27');
-
-*{
-  font-family: 'Playfair Display', serif;
-}
-
 .card__wrapper {
   border-radius: 0.35rem;
   padding: 0.5rem;
-  margin: 0.5rem;
+  margin: 0 0.5rem 0.5rem 0.5rem;
   width: 15rem;
+  background-color: #fff;
+  cursor: pointer;
+
 }
 
-.card__wrapper:hover{
-  box-shadow:  0 0.438rem 1.875rem -0.625rem #BBBBBB;
+.card__wrapper:hover {
+  box-shadow: 0 0.438rem 1.875rem -0.625rem #5C8986;
 }
 
-.card__wrapper,
 .border__quantity__btn--card,
 .border__quantity--count,
 .quantity button {
@@ -25,7 +21,8 @@
 .border__quantity__btn--card {
   border-radius: 0.35rem;
   padding: 1rem;
-  justify-content: center;
+  justify-content: space-around ;
+
 }
 
 img {
@@ -35,6 +32,7 @@ img {
 .flex {
   display: flex;
   flex-wrap: wrap;
+  
 }
 
 .button__add-to-card {
@@ -47,6 +45,7 @@ img {
   color: #fff;
   border-radius: 0.1rem;
   cursor: pointer;
+  transition:  background-color 0.5s, border-color 0.5s;
 }
 
 .button__add-to-card:hover {
@@ -63,7 +62,7 @@ img {
 
 .center__price_quantity p,
 span {
-  font-size: 0.75rem;
+  font-size: 0.83rem;
 }
 
 /* -- quantity box -- */
@@ -78,13 +77,15 @@ span {
   text-align: center;
   border-right: 0;
   border-left: 0;
-  padding: 0.12rem 0 0 0;
+  padding: 0.08rem;
+  /* padding: 0.12rem 0 0 0; */
 }
 
 .quantity button {
   background-color: #fff;
   outline: 0;
   cursor: pointer;
+  transition:  background-color 0.5s, border-color 0.5s;
 }
 
 .quantity button:hover {
