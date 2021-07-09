@@ -1,5 +1,7 @@
 .categories {
-  /* display: flex; */
+  position: relative;
+  display: flex;
+  justify-content: center;
   width: 35%;
   height: fit-content;
   flex-direction: column;
@@ -21,7 +23,6 @@
 }
 
 .categories__left-border {
-  height: 30%;
   padding: 0.75rem;
   font-size: 1rem;
   transition: font-size 0.3s;
@@ -39,15 +40,16 @@
   font-size: 1.1rem;
 }
 
-h3 {
+.subCategory__display {
   position: absolute;
-  background-color: #fff;
-  left: 20%;
+  left: 95%;
+  top: 15%;
   padding: 1rem;
-  top: 15.5rem;
+  min-height: fit-content;
+  width: 70vw;
+  background-color: #fff;
   border-top-right-radius: 0.5rem;
   border-bottom-right-radius: 0.5rem;
-  min-height: fit-content;
-  width:70vw;
+  border-bottom-left-radius: 0.5rem;
   overflow: hidden;
 }
