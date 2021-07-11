@@ -1,19 +1,8 @@
 import React, { useState } from "react";
+import CardQuantity from "../cardQuantity/cardQuantity";
 import "./card.css";
 
 const Card = () => {
-  let [count, setCount] = useState(1);
-
-  const minusQuantity = () => {
-    if (count > 1) {
-      setCount(count - 1);
-    }
-  };
-
-  const addQuantity = () => {
-    setCount(count + 1);
-  };
-
   return (
     <div className="card__wrapper">
       <div className="container__image">
@@ -28,15 +17,7 @@ const Card = () => {
           <div className="center__price_quantity">
             <p>$500/Piece</p>
 
-            <div className="quantity flex">
-              <button onClick={minusQuantity.bind(this)} className="minus">
-                -
-              </button>
-              <span className="border__quantity--count">{count}</span>
-              <button onClick={addQuantity.bind(this)} className="plus">
-                +
-              </button>
-            </div>
+            <CardQuantity/>
           </div>
           <input
             type="button"
