@@ -45,7 +45,7 @@ const Store = () => {
           <div className="product__card flex">
             <div
               onClick={() => {
-                isClicked(true);
+                window.open("http://localhost:8000/images/1626010654937-1200px-Image_created_with_a_mobile_phone.png")
               }}
             >
               <Card />
