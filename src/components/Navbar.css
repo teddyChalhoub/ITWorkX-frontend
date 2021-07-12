@@ -9,7 +9,7 @@
 }
 
 .logo {
-  max-width: 15%;
+  max-width: 10%;
 }
 
 .app__navbar__img {
@@ -17,7 +17,7 @@
   flex-wrap: wrap;
 }
 .app__navbar__input {
-  width: 50%;
+  width: 30%;
   height: 10%;
   margin: auto 0 auto 1rem;
   background-color: white;
@@ -40,6 +40,36 @@
 
 .links {
   text-decoration: none;
-  color: black;
+  color: white;
   align-self: center;
+}
+
+.cart__icon {
+  cursor: pointer;
+}
+
+.user__icon {
+  cursor: pointer;
+  margin-left: 2rem;
+}
+
+.app__user__icon {
+  position: relative;
+}
+
+.app__user__log-in {
+  top: 100%;
+  position: absolute;
+  display: flex;
+  width: max-content;
+  column-gap: 10px;
+}
+
+.app__user__log-in a {
+  text-decoration: none;
+  color: white;
+}
+
+.app__log-in .app__sign-up {
+  cursor: pointer;
 }
