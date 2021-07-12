@@ -1,9 +1,10 @@
 import "./App.css";
 import { GrDashboard } from "react-icons/gr";
 import NavBar from "./components/NavBar";
+import ContactUs from "./pages/ContactUs";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-function App() {
+const App = () => {
   return (
     <div className="App">
       <Router>
@@ -12,7 +13,7 @@ function App() {
         <Switch>
           <Route path="/" component={""} exact />
           <Route path="/store" component={""} exact />
-          <Route path="/contact-us" component={""} exact />
+          <Route path="/contact-us" component={ContactUs} exact />
           <Route path="/services" component={""} exact />
           <Route path="/about-us" component={""} exact />
           <Route path="/cart" component={""} exact />
@@ -24,6 +25,6 @@ function App() {
       </Router>
     </div>
   );
-}
+};
 
 export default App;
