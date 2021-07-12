@@ -4,6 +4,7 @@ import { BiUserCircle } from "react-icons/bi";
 import Badge from "@material-ui/core/Badge";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
+import "./Navbar.css";
 
 function NavBar({ numberOfItemsInCart }) {
   return (
@@ -18,7 +19,7 @@ function NavBar({ numberOfItemsInCart }) {
               placeholder="Search"
             />
           </div>
-          <div className="menu">
+          <div className="navbar__menu">
             <Link className="home links" to="/">
               Home{" "}
             </Link>
