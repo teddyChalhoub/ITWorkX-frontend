@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./Contact.css";
+import "./Contact-us.css";
 import { ImFacebook2 } from "react-icons/im";
 import { GrTwitter, GrInstagram, GrLinkedin, GrYoutube } from "react-icons/gr";
 import Grid from "@material-ui/core/Grid";
@@ -103,9 +103,9 @@ const ContactUs = () => {
                     required
                   >
                     <option value="select">Select</option>
-                    <option value="australia">Item enquiry</option>
-                    <option value="canada">IT Support</option>
-                    <option value="usa">Order Follow-up</option>
+                    <option value="item-enquiry">Item enquiry</option>
+                    <option value="it-support">IT Support</option>
+                    <option value="order-follow-up">Order Follow-up</option>
                   </select>
                   <br />
                   <textarea
@@ -150,11 +150,21 @@ const ContactUs = () => {
                 <div className="app__follow-us">
                   <h3 className="follow-us">Follow us</h3>
                   <div className="contact-us__icon">
-                    <ImFacebook2 color="rgba(66,104,179,255)" size="2rem" />
-                    <GrTwitter color="rgba(29,171,221,255)" size="2rem" />
-                    <GrInstagram color="rgba(201,59,140,255)" size="2rem" />
-                    <GrLinkedin color="rgba(2,116,179,255)" size="2rem" />
-                    <GrYoutube color="red" size="2rem" />
+                    <a href="https://www.facebook.com/" target="blank">
+                      <ImFacebook2 color="rgba(66,104,179,255)" size="2rem" />
+                    </a>
+                    <a href="https://twitter.com/?lang=en" target="blank">
+                      <GrTwitter color="rgba(29,171,221,255)" size="2rem" />
+                    </a>
+                    <a href="https://www.instagram.com/" target="blank">
+                      <GrInstagram color="rgba(201,59,140,255)" size="2rem" />
+                    </a>
+                    <a href="https://www.linkedin.com/" target="blank">
+                      <GrLinkedin color="rgba(2,116,179,255)" size="2rem" />
+                    </a>
+                    <a href="https://www.youtube.com/" target="blank">
+                      <GrYoutube color="red" size="2rem" />
+                    </a>
                   </div>
                 </div>
               </div>

@@ -21,11 +21,14 @@ const App = () => {
           <Route path="/log-in" component={""} exact />
           <Route path="/sign-up" component={""} exact />
         </Switch>
-        {/* <Route path="/" render={() => <Dashboard authed={true} />} />
-        function Dashboard ({authed}) {
-
-        } */}
       </Router>
+      {/* <Router>
+        <ContactUs>
+          <Switch>
+            <Route path="https://www.facebook.com/" />
+          </Switch>
+        </ContactUs>
+      </Router> */}
     </div>
   );
 };

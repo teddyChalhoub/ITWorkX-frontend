@@ -1,15 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap%27");
-
-* {
-  font-family: "Playfair Display", serif;
-  color:#334C4A;
-}
-
-/* .App {
-  text-align: center;
-} */
-
-/* .app__form {
+.app__form {
   width: 100%;
 }
 
@@ -67,6 +56,9 @@
 .app__contact-info {
   background-color: white;
   padding: 15px 30px;
+  padding-bottom: 30px;
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
 
 .container__contact-us {
@@ -78,15 +70,13 @@
 
 .contact-us__icon {
   display: flex;
-  justify-content: space-evenly; 
+  justify-content: space-evenly;
 }
-*/
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.contact-1 {
+  margin-bottom: 12%;
+}
+
+.address {
+  margin-bottom: 12%;
 }
