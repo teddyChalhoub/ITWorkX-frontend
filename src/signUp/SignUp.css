@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
+*{
+  font-family: 'Playfair Display', serif;
+}
+.App {
+  text-align: center;
+}
+input{
+  width: 40%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid black;
+  border-radius: 10px;
+  box-sizing: border-box;
+}
+.sign_up p{
+  font-size: 50px;
+}
+.note input{
+  line-height: 100px;
+
+} 
+.button {
+  background-color:black;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  width: 10%;
+  border-radius: 10px;
+}
+input[type='checkbox'] {
+  width:30px;
+  height:30px;
+  background:white;
+  border-radius:20px;
+  border:2px solid #555;
+}
+.signup-checkbox{
+  display: inline-table;
+}
+
