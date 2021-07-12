@@ -40,16 +40,23 @@ const Store = () => {
         <ItemDisplay />
       ) : (
         <div className="wrapper flex-row">
-          {categories && <SubCategories categories={categories} />}
-
+          <div className="store__page--categories">{categories && <SubCategories categories={categories} />}</div>
           <div className="product__card flex">
             <div
+              className="store__page-each-card"
               onClick={() => {
-                window.open("http://localhost:8000/images/1626010654937-1200px-Image_created_with_a_mobile_phone.png")
+                isClicked(true);
+                // window.open("http://localhost:8000/images/1626010654937-1200px-Image_created_with_a_mobile_phone.png")
               }}
             >
               <Card />
             </div>
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+            <Card />
             <Card />
             <Card />
             <Card />

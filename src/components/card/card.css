@@ -9,7 +9,7 @@
 }
 
 .card__wrapper:hover {
-  box-shadow: 0 0.438rem 1.875rem -0.625rem #5C8986;
+  box-shadow: 0 0.438rem 1.875rem -0.625rem #5c8986;
 }
 
 .border__quantity__btn--card,
@@ -20,8 +20,7 @@
 .border__quantity__btn--card {
   border-radius: 0.35rem;
   padding: 1rem;
-  justify-content: space-around ;
-
+  justify-content: space-around;
 }
 
 img {
@@ -31,7 +30,7 @@ img {
 .flex {
   display: flex;
   flex-wrap: wrap;
-  
+  justify-content: center;
 }
 
 .button__add-to-card {
@@ -44,7 +43,7 @@ img {
   color: #fff;
   border-radius: 0.1rem;
   cursor: pointer;
-  transition:  background-color 0.5s, border-color 0.5s;
+  transition: background-color 0.5s, border-color 0.5s;
 }
 
 .button__add-to-card:hover {
@@ -63,5 +62,3 @@ img {
 span {
   font-size: 0.83rem;
 }
-
-

@@ -1,8 +1,7 @@
 .categories {
   position: relative;
   display: flex;
-  justify-content: center;
-  width: 35%;
+  flex-wrap: wrap;
   height: fit-content;
   flex-direction: column;
   background-color: #fff;
