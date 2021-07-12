@@ -9,30 +9,76 @@
   text-align: center;
 } */
 
-/* .App-logo {
+.app__form {
+  width: 100%;
+}
+
+.email,
+.mnumber,
+.fname,
+.topic,
+.comment {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+}
+
+.topic {
+  cursor: pointer;
+  background-color: white;
+}
+
+.comment {
+  height: 120px;
+  cursor: pointer;
+}
+
+.email,
+.mnumber,
+.fname {
+  background-color: white;
+  color: black;
+  padding: 12px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  outline: none;
+}
+
+.btn {
+  background-color: rgb(104, 103, 103);
+  border-radius: 4px;
+  color: black;
+  padding: 10px 20px;
+  text-align: center;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.App-logo {
   height: 40vmin;
   pointer-events: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.app__contact-info {
+  background-color: white;
+  padding: 15px 30px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.container__contact-us {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: space-evenly;
+  background-color: #f2f2f2;
+  padding: 20px;
 }
 
-.App-link {
-  color: #61dafb;
+.contact-us__icon {
+  display: flex;
+  justify-content: space-evenly;
 }
 
 @keyframes App-logo-spin {
@@ -42,5 +88,4 @@
   to {
     transform: rotate(360deg);
   }
-} */
-
+}
