@@ -51,17 +51,6 @@ const Store = () => {
             >
               <Card />
             </div>
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
           </div>
         </div>
       )}
