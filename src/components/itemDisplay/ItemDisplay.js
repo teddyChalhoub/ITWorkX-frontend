@@ -1,11 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
 import CardQuantity from "../cardQuantity/cardQuantity";
 import "./ItemDisplay.css";
 
 const ItemDisplay = () => {
+  
   const location = useLocation();
   console.log(location.someData.data);
+  const [quantity, setQuantity] = useState(1);
+
+  const fetchQuantity = (value) => {
+    setQuantity(value);
+    console.log(value);
+  };
+
   return (
     <>
       <div className="item__details">
@@ -19,24 +27,40 @@ const ItemDisplay = () => {
           <p>{location.someData.data.subTitle}</p>
 
           <div className="item__details-card">
-            <div className="item__details-card-price">
-              <p>Price</p>
-              <p>{location.someData.data.price}$</p>
-            </div>
-            <div className="item__details-card-quantity">
-              <CardQuantity isItemDisplay={true} />
-            </div>
-            <div className="item__details-card-discount">
-              <p>Discount</p>
-              <p>
-                {location.someData.data.discount !== 0
-                  ? ""
-                  : `${location.someData.data.discount}%`}
-              </p>
-            </div>
-            <div className="item__details-card-total-price">
-              <p>Total Price</p>
-              <p>{location.someData.data.price}$</p>
+            <div className="item__details-padding-price-to-totalPrice">
+              <div className="item__details-card-price">
+                <p>Price</p>
+                <p>{location.someData.data.price}$</p>
+              </div>
+              <div className="item__details-card-quantity">
+                <CardQuantity
+                  fetchQuantity={fetchQuantity}
+                  isItemDisplay={true}
+                />
+              </div>
+
+              {location.someData.data.discount === "" ? (
+                <div className="item__details-card-total-price">
+                  <p>Total Price</p>
+                  <p>{parseInt(location.someData.data.price) * quantity}$</p>
+                </div>
+              ) : (
+                <>
+                  <div className="item__details-card-discount">
+                    <p>Discount</p>
+                    <p>{location.someData.data.discount}%</p>
+                  </div>
+                  <div className="item__details-card-total-price">
+                    <p>Total Price</p>
+                    <p>
+                      {parseInt(location.someData.data.price) *
+                        (parseInt(location.someData.data.discount) / 100) *
+                        quantity}
+                      $
+                    </p>
+                  </div>
+                </>
+              )}
             </div>
             <div className="item__details-card--buttons">
               <button>Add to cart</button>
@@ -46,24 +70,7 @@ const ItemDisplay = () => {
         </div>
       </div>
       <div className="item__description">
-        <p>
-          Contrary to popular belief, Lorem Ipsum is not simply random text. It
-          has roots in a piece of classical Latin literature from 45 BC, making
-          it over 2000 years old. Richard McClintock, a Latin professor at
-          Hampden-Sydney College in Virginia, looked up one of the more obscure
-          Latin words, consectetur, from a Lorem Ipsum passage, and going
-          through the cites of the word in classical literature, discovered the
-          undoubtable source. Lorem Ipsum comes from sections 1.10.32 and
-          1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and
-          Evil) by Cicero, written in 45 BC. This book is a treatise on the
-          theory of ethics, very popular during the Renaissance. The first line
-          of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in
-          section 1.10.32. The standard chunk of Lorem Ipsum used since the
-          1500s is reproduced below for those interested. Sections 1.10.32 and
-          1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also
-          reproduced in their exact original form, accompanied by English
-          versions from the 1914 translation by H. Rackham.
-        </p>
+        <p>{location.someData.data.description}</p>
       </div>
     </>
   );

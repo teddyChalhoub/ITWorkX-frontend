@@ -1,25 +1,24 @@
 import React, { useState } from "react";
 import "./cardQuantity.css";
 
-const CardQuantity = () => {
+const CardQuantity = (props) => {
   let [count, setCount] = useState(1);
 
   const minusQuantity = () => {
     if (count > 1) {
       setCount(count - 1);
+      props.fetchQuantity(count - 1);
     }
   };
 
   const addQuantity = () => {
     setCount(count + 1);
+    props.fetchQuantity(count + 1);
   };
 
   return (
     <>
-      <div
-        className="quantity flex"
-        
-      >
+      <div className="quantity flex">
         <button onClick={minusQuantity.bind(this)} className="minus">
           -
         </button>

@@ -15,6 +15,7 @@ body {
 
 .product__card{
   flex:75%;
+  margin-left: 5%;
 }
 .flex-row {
   display: flex;

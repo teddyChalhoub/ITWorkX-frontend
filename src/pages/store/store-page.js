@@ -13,7 +13,7 @@ const Store = () => {
     data: product,
     message,
     error,
-  } = useFetch("http://localhost:5000/product/");
+  } = useFetch("http://localhost:5000/product");
 
   const [categories, setCategories] = useState([
     {
@@ -64,8 +64,8 @@ const Store = () => {
                   <Link
                     to={{ pathname: "/itemDisplay", someData: { data:res } }}
                   >
-                    <div className="store__page-each-card">
-                      <Card title={res.title} price={res.price} key={index} />
+                    <div key={index} className="store__page-each-card">
+                      <Card title={res.title} price={res.price}  />
                     </div>
                   </Link>
                 );
