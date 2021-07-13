@@ -13,6 +13,10 @@ body {
 
 }
 
+.store__page-each-card{
+  margin-bottom: 1rem;
+}
+
 .product__card{
   flex:75%;
   margin-left: 5%;
