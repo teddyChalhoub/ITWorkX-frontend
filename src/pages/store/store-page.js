@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Card from "../../components/card/card.js";
 import SubCategories from "../../components/category/category-component.js";
 import "./store-page.css";
-import { isElement } from "react-dom/cjs/react-dom-test-utils.production.min";
+import ItemDisplay from "../../components/itemDisplay/ItemDisplay.js";
 
 const Store = () => {
   const [categories, setCategories] = useState([
@@ -29,30 +29,31 @@ const Store = () => {
     {
       id: 5,
       category: "Category 5",
-      subCategory:"SubCategory 5",
+      subCategory: "SubCategory 5",
     },
-    
-   
-  
   ]);
-
+  const [clicked, isClicked] = useState(false);
   return (
     <>
       <div className="nav__bar"></div>
-
-      <div className="wrapper flex-row">
- 
-          {categories && <SubCategories categories={categories} />}
-
-        <div className="product__card flex">
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
+      {clicked ? (
+        <ItemDisplay />
+      ) : (
+        <div className="wrapper flex-row">
+          <div className="store__page--categories">{categories && <SubCategories categories={categories} />}</div>
+          <div className="product__card flex">
+            <div
+              className="store__page-each-card"
+              onClick={() => {
+                isClicked(true);
+                // window.open("http://localhost:8000/images/1626010654937-1200px-Image_created_with_a_mobile_phone.png")
+              }}
+            >
+              <Card />
+            </div>
+          </div>
         </div>
-      </div>
+      )}
     </>
   );
 };

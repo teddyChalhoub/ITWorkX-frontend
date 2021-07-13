@@ -9,11 +9,10 @@
 }
 
 .card__wrapper:hover {
-  box-shadow: 0 0.438rem 1.875rem -0.625rem #5C8986;
+  box-shadow: 0 0.438rem 1.875rem -0.625rem #5c8986;
 }
 
 .border__quantity__btn--card,
-.border__quantity--count,
 .quantity button {
   border: 0.1rem solid #d3d3d3;
 }
@@ -21,8 +20,7 @@
 .border__quantity__btn--card {
   border-radius: 0.35rem;
   padding: 1rem;
-  justify-content: space-around ;
-
+  justify-content: space-around;
 }
 
 img {
@@ -32,7 +30,7 @@ img {
 .flex {
   display: flex;
   flex-wrap: wrap;
-  
+  justify-content: center;
 }
 
 .button__add-to-card {
@@ -45,7 +43,7 @@ img {
   color: #fff;
   border-radius: 0.1rem;
   cursor: pointer;
-  transition:  background-color 0.5s, border-color 0.5s;
+  transition: background-color 0.5s, border-color 0.5s;
 }
 
 .button__add-to-card:hover {
@@ -63,42 +61,4 @@ img {
 .center__price_quantity p,
 span {
   font-size: 0.83rem;
-}
-
-/* -- quantity box -- */
-
-.quantity {
-  height: 50%;
-}
-
-.border__quantity--count {
-  display: block;
-  width: 35%;
-  text-align: center;
-  border-right: 0;
-  border-left: 0;
-  padding: 0.08rem;
-  /* padding: 0.12rem 0 0 0; */
-}
-
-.quantity button {
-  background-color: #fff;
-  outline: 0;
-  cursor: pointer;
-  transition:  background-color 0.5s, border-color 0.5s;
-}
-
-.quantity button:hover {
-  background-color: #eeeeee;
-  border-color: #eeeeee;
-}
-
-.minus {
-  border-bottom-left-radius: 0.25rem;
-  border-top-left-radius: 0.25rem;
-}
-
-.plus {
-  border-bottom-right-radius: 0.25rem;
-  border-top-right-radius: 0.25rem;
 }
