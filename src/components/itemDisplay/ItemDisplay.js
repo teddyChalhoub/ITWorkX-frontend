@@ -1,8 +1,11 @@
 import React from "react";
+import { useLocation } from "react-router-dom";
 import CardQuantity from "../cardQuantity/cardQuantity";
 import "./ItemDisplay.css";
 
-const ItemDisplay = (props) => {
+const ItemDisplay = () => {
+  const location = useLocation();
+  console.log(location.someData.data);
   return (
     <>
       <div className="item__details">
@@ -12,25 +15,28 @@ const ItemDisplay = (props) => {
         />
 
         <div className="item__details-title-card">
-          <p>Item name</p>
-          <p>Item Sub title</p>
+          <p>{location.someData.data.title}</p>
+          <p>{location.someData.data.subTitle}</p>
 
           <div className="item__details-card">
             <div className="item__details-card-price">
               <p>Price</p>
-              <p>300$</p>
+              <p>{location.someData.data.price}$</p>
             </div>
             <div className="item__details-card-quantity">
-              {/* <p>Quantity</p> */}
               <CardQuantity isItemDisplay={true} />
             </div>
             <div className="item__details-card-discount">
               <p>Discount</p>
-              <p>10%</p>
+              <p>
+                {location.someData.data.discount !== 0
+                  ? ""
+                  : `${location.someData.data.discount}%`}
+              </p>
             </div>
             <div className="item__details-card-total-price">
               <p>Total Price</p>
-              <p>300$</p>
+              <p>{location.someData.data.price}$</p>
             </div>
             <div className="item__details-card--buttons">
               <button>Add to cart</button>

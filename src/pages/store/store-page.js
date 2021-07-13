@@ -4,12 +4,16 @@ import SubCategories from "../../components/category/category-component.js";
 import "./store-page.css";
 import ItemDisplay from "../../components/itemDisplay/ItemDisplay.js";
 import useFetch from "../../utils/useFetch.js";
+import NewWindow from "react-new-window";
+import { Link } from "react-router-dom";
 
 const Store = () => {
-
-  const { loading, data: product, message, error } = useFetch(
-    "http://localhost:5000/product/"
-  );
+  const {
+    loading,
+    data: product,
+    message,
+    error,
+  } = useFetch("http://localhost:5000/product/");
 
   const [categories, setCategories] = useState([
     {
@@ -39,8 +43,6 @@ const Store = () => {
     },
   ]);
 
-  const [clicked, isClicked] = useState(false);
-
   return (
     <>
       {loading ? (
@@ -59,14 +61,13 @@ const Store = () => {
                   console.log("map res", res);
                 }
                 return (
-                  <div
-                    className="store__page-each-card"
-                    onClick={() => {
-                      window.open("http://localhost:3000/itemDisplay");
-                    }}
+                  <Link
+                    to={{ pathname: "/itemDisplay", someData: { data:res } }}
                   >
-                    <Card title={res.title} price={res.price} key={index} />
-                  </div>
+                    <div className="store__page-each-card">
+                      <Card title={res.title} price={res.price} key={index} />
+                    </div>
+                  </Link>
                 );
               })}
           </div>
