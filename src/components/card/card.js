@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import CardQuantity from "../cardQuantity/cardQuantity";
 import "./card.css";
 
-const Card = () => {
+const Card = (props) => {
+  {console.log(props)}
   return (
     <div className="card__wrapper">
       <div className="container__image">
@@ -12,10 +13,10 @@ const Card = () => {
         />
       </div>
       <div>
-        <p>Item Title</p>
+        <p>{props.title}</p>
         <div className="border__quantity__btn--card flex">
           <div className="center__price_quantity">
-            <p>$500/Piece</p>
+            <p>{props.price}$/Piece</p>
 
             <CardQuantity/>
           </div>

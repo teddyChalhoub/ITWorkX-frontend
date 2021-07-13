@@ -1,10 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Card from "../../components/card/card.js";
 import SubCategories from "../../components/category/category-component.js";
 import "./store-page.css";
 import ItemDisplay from "../../components/itemDisplay/ItemDisplay.js";
+import useFetch from "../../utils/useFetch.js";
 
 const Store = () => {
+
+  const { loading, data: product, message, error } = useFetch(
+    "http://localhost:5000/product/"
+  );
+
   const [categories, setCategories] = useState([
     {
       id: 1,
@@ -32,25 +38,37 @@ const Store = () => {
       subCategory: "SubCategory 5",
     },
   ]);
+
   const [clicked, isClicked] = useState(false);
+
   return (
     <>
-      <div className="nav__bar"></div>
-      {clicked ? (
-        <ItemDisplay />
+      {loading ? (
+        <div>Loading....</div>
+      ) : error ? (
+        <div>{message}</div>
       ) : (
         <div className="wrapper flex-row">
-          <div className="store__page--categories">{categories && <SubCategories categories={categories} />}</div>
+          <div className="store__page--categories">
+            {categories && <SubCategories categories={categories} />}
+          </div>
           <div className="product__card flex">
-            <div
-              className="store__page-each-card"
-              onClick={() => {
-                isClicked(true);
-                // window.open("http://localhost:8000/images/1626010654937-1200px-Image_created_with_a_mobile_phone.png")
-              }}
-            >
-              <Card />
-            </div>
+            {product &&
+              product.map((res, index) => {
+                {
+                  console.log("map res", res);
+                }
+                return (
+                  <div
+                    className="store__page-each-card"
+                    onClick={() => {
+                      window.open("http://localhost:3000/itemDisplay");
+                    }}
+                  >
+                    <Card title={res.title} price={res.price} key={index} />
+                  </div>
+                );
+              })}
           </div>
         </div>
       )}
