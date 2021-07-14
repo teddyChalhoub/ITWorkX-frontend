@@ -4,6 +4,7 @@ import "./DigitalSolution.css";
 const DigitalSolution = () => {
   return (
     <div>
+      <h1 className="app__digital-solution">Digital Solutions</h1>
       <section id="pricing">
         <div className="product" id="solo">
           <img src="./img/img6.jpg" className="image" />

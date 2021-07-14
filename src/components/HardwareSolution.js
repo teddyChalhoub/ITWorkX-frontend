@@ -1,11 +1,11 @@
 import React from "react";
-import "./AboutBusiness.css";
+import "./HardwareSolution.css";
 
-const AboutBusiness = () => {
+const HardwareSolution = () => {
   return (
-    <div className="app__about-business">
-      <h3 className="about-business">About the Business</h3>
-      <p className="app__paragraph">
+    <div className="app__HardwareSolution">
+      <h3 className="HardwareSolution">IT and Hardware Solution</h3>
+      <p className="app__HardwareSolution__paragraph">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla tristique
         porttitor rhoncus. Vestibulum in nibh bibendum, eleifend risus quis,
         pellentesque leo. Curabitur scelerisque mollis lacinia. Vestibulum
@@ -18,8 +18,13 @@ const AboutBusiness = () => {
         Suspendisse in metus libero. Aenean ullamcorper vestibulum quam id
         sodales.
       </p>
+      <div className="app__btn__shop">
+        <button className="btn__shop" type="submit">
+          CLICK HERE TO SHOP
+        </button>
+      </div>
     </div>
   );
 };
 
-export default AboutBusiness;
+export default HardwareSolution;
