@@ -3,6 +3,7 @@ import "./App.css";
 import NavBar from "./components/NavBar";
 import ContactUs from "./pages/ContactUs";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Home from "./pages/Home";
 
 const App = () => {
   return (
@@ -22,6 +23,9 @@ const App = () => {
           <Route path="/sign-up" component={""} exact />
         </Switch>
       </Router>
+      <Home />
+
+      {/* <Home /> */}
       {/* <Router>
         <ContactUs>
           <Switch>
