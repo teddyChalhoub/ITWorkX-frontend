@@ -12,7 +12,6 @@ const useFetch = (url) => {
       .get(url)
       .then((res) => {
         if (res.data.success) {
-          console.log(res.data.data);
           setMessage("");
           setData(res.data.data);
           isLoading(false);
@@ -22,7 +21,6 @@ const useFetch = (url) => {
         }
       })
       .catch((err) => {
-        console.log(err.message);
         setData([]);
         setMessage(err.message);
         isLoading(false);

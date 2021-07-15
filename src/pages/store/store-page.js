@@ -13,35 +13,36 @@ const Store = () => {
     data: product,
     message,
     error,
-  } = useFetch("http://localhost:5000/product");
+  } = useFetch("http://localhost:5000/category");
 
-  const [categories, setCategories] = useState([
-    {
-      id: 1,
-      category: "Category 1",
-      subCategory: "SubCategory 1",
-    },
-    {
-      id: 2,
-      category: "Category 2",
-      subCategory: "SubCategory 2",
-    },
-    {
-      id: 3,
-      category: "Category 3",
-      subCategory: "SubCategory 3",
-    },
-    {
-      id: 4,
-      category: "Category 4",
-      subCategory: "SubCategory 4",
-    },
-    {
-      id: 5,
-      category: "Category 5",
-      subCategory: "SubCategory 5",
-    },
-  ]);
+  const [categories, setCategories] = useState([]);
+  const [subCategories, setSubCategories] = useState([]);
+
+
+  useEffect(() => {
+    storeCategory(product);
+  }, [product]);
+
+  const storeCategory = (value) => {
+    value.map((category) => {
+      if (category.parent_category !== undefined) {
+        setSubCategories([
+          ...subCategories,
+          {
+            category: category.name,
+            parent_category: category.parent_category.name,
+          },
+        ]);
+      } else {
+        setCategories([
+          ...categories,
+          {
+            category: category.name,
+          },
+        ]);
+      }
+    });
+  };
 
   return (
     <>
@@ -52,22 +53,31 @@ const Store = () => {
       ) : (
         <div className="wrapper flex-row">
           <div className="store__page--categories">
-            {categories && <SubCategories categories={categories} />}
+            {subCategories && <SubCategories categories={categories} subCategories={subCategories} />}
           </div>
           <div className="product__card flex">
             {product &&
-              product.map((res, index) => {
-                {
-                  console.log("map res", res);
-                }
+              product.map((res) => {
                 return (
-                  <Link
-                    to={{ pathname: "/itemDisplay", someData: { data:res } }}
-                  >
-                    <div key={index} className="store__page-each-card">
-                      <Card title={res.title} price={res.price}  />
-                    </div>
-                  </Link>
+                  res.product &&
+                  res.product.map((product) => {
+                    return (
+                      <Link
+                        key={product._id}
+                        to={{
+                          pathname: "/itemDisplay",
+                          someData: { data: product },
+                        }}
+                      >
+                        <div
+                          key={product._id}
+                          className="store__page-each-card"
+                        >
+                          <Card title={product.title} price={product.price} />
+                        </div>
+                      </Link>
+                    );
+                  })
                 );
               })}
           </div>
