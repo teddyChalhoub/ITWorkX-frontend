@@ -11,11 +11,6 @@
   background-color: #f5f5f5;
 }
 
-.item__details--img {
-  width: 50%;
-  border-radius: 0.5rem;
-}
-
 .item__details-title-card {
   width: 40%;
 }
