@@ -4,8 +4,7 @@ import SubCategories from "../../components/category/category-component.js";
 import "./store-page.css";
 import ItemDisplay from "../../components/itemDisplay/ItemDisplay.js";
 import useFetch from "../../utils/useFetch.js";
-import { Route,Link, Switch,withRouter } from "react-router-dom";
-
+import { Route, Link, Switch, withRouter } from "react-router-dom";
 
 const Store = (props) => {
   const {
@@ -27,7 +26,7 @@ const Store = (props) => {
   const storeCategory = (value) => {
     console.log(value);
     value.map((category) => {
-      console.log("category",category)
+      console.log("category", category);
       if (category.parent_category !== undefined) {
         setSubCategories([
           ...subCategories,
@@ -69,16 +68,24 @@ const Store = (props) => {
                 return (
                   res.product &&
                   res.product.map((product) => {
-                    console.log("_id",product._id)
+                    // console.log({ productImage: product.images[0].url });
                     return (
                       <div
                         key={product._id}
                         className="store__page-each-card"
-                        onClick={()=>{
+                        onClick={() => {
                           window.open(`/store/${product.title}`);
                         }}
                       >
-                        <Card title={product.title} price={product.price} />
+                        {product.images.length > 0 ? (
+                          <Card
+                            image={product.images[1].url}
+                            title={product.title}
+                            price={product.price}
+                          />
+                        ) : (
+                          <Card title={product.title} price={product.price} />
+                        )}
                       </div>
                     );
                   })

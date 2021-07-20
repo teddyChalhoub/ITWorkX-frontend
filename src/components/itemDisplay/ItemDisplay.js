@@ -6,32 +6,15 @@ import { withRouter, useParams } from "react-router-dom";
 import useFetch from "../../utils/useFetch.js";
 import ProductImages from "../productImages/productImages";
 
-const ItemDisplay = (props) => {
+const ItemDisplay = () => {
+
   const [quantity, setQuantity] = useState(1);
   const [images, setImages] = useState();
-  const productImages = [
-    {
-      url: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/1200px-Image_created_with_a_mobile_phone.png",
-    },
-    {
-      url: "https://media-cdn.tripadvisor.com/media/photo-s/11/c2/ee/c9/dfsdf.jpg",
-    },
 
-    {
-      url: "https://www.lebanontraveler.com/wp-content/uploads/2018/11/Basket-weaving-365-Days-of-Lebanon.jpg",
-    },
-    {
-      url: "https://previews.123rf.com/images/dkaranouh/dkaranouh1709/dkaranouh170900064/86573454-traditional-baskets-on-sale-in-the-old-souks-of-tripoli-lebanon.jpg",
-    },
-    {
-      url: "https://previews.123rf.com/images/dkaranouh/dkaranouh1709/dkaranouh170900049/85868744-the-streets-of-old-tripoli-lebanon.jpg",
-    },
-  ];
   const { title } = useParams();
 
   const fetchQuantity = (value) => {
     setQuantity(value);
-    console.log(value);
   };
 
   const {
@@ -44,8 +27,6 @@ const ItemDisplay = (props) => {
   useEffect(() => {
     setImages(product.images);
   }, [product]);
-
-  console.log("product", images);
 
   return (
     <>

@@ -5,10 +5,14 @@
   overflow: hidden;
 }
 
+.item__details--img_placeholder img,
+.item__details--img img {
+  border-radius: 0.5rem;
+}
+
 .item__details--img img {
   height: 20rem;
   width: 30rem;
-  border-radius: 0.5rem;
 }
 
 .item__gallery__img {
@@ -26,15 +30,14 @@
   cursor: pointer;
   filter: blur(0.05rem);
   transition: all 0.7s ease-in-out;
-
 }
 
 .item__gallery__img img:hover {
   filter: blur(0);
 }
 
-.item__gallery__img--active{
+.item__gallery__img--active {
   filter: blur(0) !important;
-  width:6rem  !important;
-  height: 6rem  !important;
+  width: 6rem !important;
+  height: 6rem !important;
 }
