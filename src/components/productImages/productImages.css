@@ -1,21 +1,21 @@
 .item__image__container {
   width: 50%;
-  height: 50%;
   display: block;
-  overflow: hidden;
 }
 
 .item__details--img_placeholder img,
 .item__details--img img {
   border-radius: 0.5rem;
-}
-
-.item__details--img img {
   height: 20rem;
   width: 30rem;
 }
 
+.item__details--img_placeholder img{
+  height: 100%;
+}
+
 .item__gallery__img {
+  overflow-x: hidden;
   width: 80%;
   display: flex;
   flex-wrap: wrap;
@@ -40,4 +40,8 @@
   filter: blur(0) !important;
   width: 6rem !important;
   height: 6rem !important;
+}
+
+.item__details-title-card > p:first-child{
+  margin-top:0;
 }

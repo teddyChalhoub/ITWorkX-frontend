@@ -5,6 +5,7 @@ import "./store-page.css";
 import ItemDisplay from "../../components/itemDisplay/ItemDisplay.js";
 import useFetch from "../../utils/useFetch.js";
 import { Route, Link, Switch, withRouter } from "react-router-dom";
+import Slider from "../../components/ProductSlider/Slider.js";
 
 const Store = (props) => {
   const {
@@ -53,46 +54,45 @@ const Store = (props) => {
       ) : error ? (
         <div>{message}</div>
       ) : (
-        <div className="wrapper flex-row">
-          <div className="store__page--categories">
-            {categories && (
-              <SubCategories
-                categories={categories}
-                subCategories={subCategories}
-              />
-            )}
+        <>
+          <Slider />
+          <div className="wrapper flex-row">
+            <div className="store__page--categories">
+              {categories && (
+                <SubCategories
+                  categories={categories}
+                  subCategories={subCategories}
+                />
+              )}
+            </div>
+            <div className="product__card flex">
+              {product &&
+                product.map((res) => {
+                  return (
+                    res.product &&
+                    res.product.map((product) => {
+                      return (
+                        <div
+                          key={product._id}
+                          className="store__page-each-card"
+                        >
+                          {product.images.length > 0 ? (
+                            <Card
+                              image={product.images[1].url}
+                              title={product.title}
+                              price={product.price}
+                            />
+                          ) : (
+                            <Card title={product.title} price={product.price} />
+                          )}
+                        </div>
+                      );
+                    })
+                  );
+                })}
+            </div>
           </div>
-          <div className="product__card flex">
-            {product &&
-              product.map((res) => {
-                return (
-                  res.product &&
-                  res.product.map((product) => {
-                    // console.log({ productImage: product.images[0].url });
-                    return (
-                      <div
-                        key={product._id}
-                        className="store__page-each-card"
-                        onClick={() => {
-                          window.open(`/store/${product.title}`);
-                        }}
-                      >
-                        {product.images.length > 0 ? (
-                          <Card
-                            image={product.images[1].url}
-                            title={product.title}
-                            price={product.price}
-                          />
-                        ) : (
-                          <Card title={product.title} price={product.price} />
-                        )}
-                      </div>
-                    );
-                  })
-                );
-              })}
-          </div>
-        </div>
+        </>
       )}
     </>
   );

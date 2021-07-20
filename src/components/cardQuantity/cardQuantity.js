@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./cardQuantity.css";
 
 const CardQuantity = (props) => {
+
   let [count, setCount] = useState(1);
 
   const minusQuantity = (e) => {

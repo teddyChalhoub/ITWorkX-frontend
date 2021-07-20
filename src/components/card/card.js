@@ -3,16 +3,27 @@ import CardQuantity from "../cardQuantity/cardQuantity";
 import "./card.css";
 
 const Card = (props) => {
-  {
-    console.log(props);
+
+  const fetchQuantity = (value)=>{
+      console.log({value});
   }
+
   return (
     <div className="card__wrapper">
       <div className="container__image">
         {props.image ? (
-          <img src={`http://localhost:5000${props.image}`} alt="" />
+          <img
+            onClick={() => {
+              window.open(`/store/${props.title}`);
+            }}
+            src={`http://localhost:5000${props.image}`}
+            alt=""
+          />
         ) : (
           <img
+            onClick={() => {
+              window.open(`/store/${props.title}`);
+            }}
             src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/1200px-Image_created_with_a_mobile_phone.png"
             alt=""
           />
@@ -24,7 +35,7 @@ const Card = (props) => {
           <div className="center__price_quantity">
             <p>{props.price}$/Piece</p>
 
-            <CardQuantity />
+            <CardQuantity fetchQuantity={fetchQuantity}/>
           </div>
           <input
             type="button"
