@@ -3,7 +3,7 @@ import "./category-component.css";
 
 const SubCategories = (props) => {
   const [isShown, setIsShown] = useState({
-    visibility: "block",
+    visibility: "none",
   });
 
   return (

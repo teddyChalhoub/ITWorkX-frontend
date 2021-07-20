@@ -26,3 +26,7 @@ body {
   flex-direction: row;
 }
 
+.store_card_link_decoration{
+  text-decoration: none;
+}
+

@@ -1,12 +1,15 @@
 import "./App.css";
-//import { GrDashboard } from "react-icons/gr";
-import NavBar from "./components/NavBar";
+import {useState} from "react";
+import NavBar from "./components/NavBar/NavBar";
 import ContactUs from "./pages/ContactUs";
 import StorePage from "./pages/store/store-page";
 import ItemDisplay from "./components/itemDisplay/ItemDisplay";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route,withRouter } from "react-router-dom";
+import useFetch from "./utils/useFetch.js";
 
 const App = () => {
+
+
   return (
     <div className="App">
       <Router>
@@ -20,7 +23,7 @@ const App = () => {
             }}
             exact
           />
-          <Route path="/itemDisplay" component={ItemDisplay} exact />
+          <Route path="/store/:title"  render={props=><ItemDisplay {...props}  />} exact/>
           <Route path="/contact-us" component={ContactUs} exact />
           <Route path="/services" component={""} exact />
           <Route path="/about-us" component={""} exact />

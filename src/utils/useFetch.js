@@ -17,7 +17,7 @@ const useFetch = (url) => {
           isLoading(false);
           isError(false);
         } else {
-          throw new Error("Error with Getting data");
+          throw new Error("Check your internet connection");
         }
       })
       .catch((err) => {

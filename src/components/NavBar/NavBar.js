@@ -4,7 +4,7 @@ import Badge from "@material-ui/core/Badge";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import "./Navbar.css";
-import logo from "./img/LOGO.png";
+import logo from "./LOGO.png";
 
 function NavBar({ numberOfItemsInCart }) {
   const [visible, setVisible] = useState(false);

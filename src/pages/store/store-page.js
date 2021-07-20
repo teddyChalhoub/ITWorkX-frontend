@@ -4,10 +4,10 @@ import SubCategories from "../../components/category/category-component.js";
 import "./store-page.css";
 import ItemDisplay from "../../components/itemDisplay/ItemDisplay.js";
 import useFetch from "../../utils/useFetch.js";
-import NewWindow from "react-new-window";
-import { Link } from "react-router-dom";
+import { Route,Link, Switch,withRouter } from "react-router-dom";
 
-const Store = () => {
+
+const Store = (props) => {
   const {
     loading,
     data: product,
@@ -18,13 +18,16 @@ const Store = () => {
   const [categories, setCategories] = useState([]);
   const [subCategories, setSubCategories] = useState([]);
 
-
   useEffect(() => {
+    setCategories("");
+    setSubCategories("");
     storeCategory(product);
   }, [product]);
 
   const storeCategory = (value) => {
+    console.log(value);
     value.map((category) => {
+      console.log("category",category)
       if (category.parent_category !== undefined) {
         setSubCategories([
           ...subCategories,
@@ -53,7 +56,12 @@ const Store = () => {
       ) : (
         <div className="wrapper flex-row">
           <div className="store__page--categories">
-            {subCategories && <SubCategories categories={categories} subCategories={subCategories} />}
+            {categories && (
+              <SubCategories
+                categories={categories}
+                subCategories={subCategories}
+              />
+            )}
           </div>
           <div className="product__card flex">
             {product &&
@@ -61,21 +69,17 @@ const Store = () => {
                 return (
                   res.product &&
                   res.product.map((product) => {
+                    console.log("_id",product._id)
                     return (
-                      <Link
+                      <div
                         key={product._id}
-                        to={{
-                          pathname: "/itemDisplay",
-                          someData: { data: product },
+                        className="store__page-each-card"
+                        onClick={()=>{
+                          window.open(`/store/${product.title}`);
                         }}
                       >
-                        <div
-                          key={product._id}
-                          className="store__page-each-card"
-                        >
-                          <Card title={product.title} price={product.price} />
-                        </div>
-                      </Link>
+                        <Card title={product.title} price={product.price} />
+                      </div>
                     );
                   })
                 );
@@ -87,4 +91,4 @@ const Store = () => {
   );
 };
 
-export default Store;
+export default withRouter(Store);
