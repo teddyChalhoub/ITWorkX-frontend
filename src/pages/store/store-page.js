@@ -7,13 +7,14 @@ import useFetch from "../../utils/useFetch.js";
 import { Route, Link, Switch, withRouter } from "react-router-dom";
 import Slider from "../../components/ProductSlider/Slider.js";
 
-const Store = (props) => {
+const Store = () => {
   const {
     loading,
     data: product,
     message,
     error,
   } = useFetch("http://localhost:5000/category");
+  console.log({ product: product });
 
   const [categories, setCategories] = useState([]);
   const [subCategories, setSubCategories] = useState([]);
@@ -21,24 +22,24 @@ const Store = (props) => {
   useEffect(() => {
     setCategories("");
     setSubCategories("");
-    storeCategory(product);
+    if (product.length > 0) {
+      storeCategory(product[0].categories);
+    }
   }, [product]);
 
   const storeCategory = (value) => {
-    console.log(value);
     value.map((category) => {
-      console.log("category", category);
       if (category.parent_category !== undefined) {
-        setSubCategories([
-          ...subCategories,
+        setSubCategories((response) => [
+          ...response,
           {
             category: category.name,
             parent_category: category.parent_category.name,
           },
         ]);
       } else {
-        setCategories([
-          ...categories,
+        setCategories((response) => [
+          ...response,
           {
             category: category.name,
           },
@@ -55,9 +56,10 @@ const Store = (props) => {
         <div>{message}</div>
       ) : (
         <>
-          <Slider />
+          {product && product[0].Carousel && <Slider images={product[0].Carousel} />}
           <div className="wrapper flex-row">
             <div className="store__page--categories">
+              {console.log("categories", categories)}
               {categories && (
                 <SubCategories
                   categories={categories}
@@ -67,7 +69,7 @@ const Store = (props) => {
             </div>
             <div className="product__card flex">
               {product &&
-                product.map((res) => {
+                product[0].categories.map((res) => {
                   return (
                     res.product &&
                     res.product.map((product) => {

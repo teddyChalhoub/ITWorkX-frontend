@@ -3,22 +3,14 @@ import "./Slider.css";
 import BtnSlider from "./ButtonsSlider/BtnSlider";
 // import dataSlider from './dataSlider'
 
-export default function Slider() {
+export default function Slider(props) {
   const [slideIndex, setSlideIndex] = useState(1);
-  const [dataSlider, setDataSlider] = useState([
-    {
-      url: "https://image.shutterstock.com/image-photo/large-beautiful-drops-transparent-rain-600w-668593321.jpg",
-    },
-    {
-      url: "https://image.shutterstock.com/image-photo/waves-water-river-sea-meet-600w-1529923664.jpg",
-    },
-    {
-      url: "https://image.shutterstock.com/image-illustration/nature-technology-abstract-concept-robot-600w-1072059917.jpg",
-    },
-    {
-      url: "https://image.shutterstock.com/image-photo/majestic-sunset-mountains-landscape-wonderful-600w-1487897981.jpg",
-    },
-  ]);
+  const [dataSlider, setDataSlider] = useState([]);
+
+  useEffect(()=>{
+      setDataSlider(props.images);
+      console.log(dataSlider)
+  })
   const nextSlide = () => {
     if (slideIndex !== dataSlider.length) {
       setSlideIndex(slideIndex + 1);
@@ -50,7 +42,7 @@ export default function Slider() {
                 slideIndex === index + 1 ? "slide active-anim" : "slide"
               }
             >
-              <img src={obj.url} />
+              <img src={`http://localhost:5000${obj.url}`} />
             </div>
           );
         })}

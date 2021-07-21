@@ -14,6 +14,7 @@ const SubCategories = (props) => {
           props.categories.map((category, index) => {
             return (
               <div
+                key={index}
                 className="categories__left-border"
                 key={index}
                 onMouseEnter={() => {

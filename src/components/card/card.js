@@ -11,7 +11,7 @@ const Card = (props) => {
   return (
     <div className="card__wrapper">
       <div className="container__image">
-        {props.image ? (
+        {props.image? (
           <img
             onClick={() => {
               window.open(`/store/${props.title}`);
