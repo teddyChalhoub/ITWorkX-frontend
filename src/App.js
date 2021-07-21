@@ -1,7 +1,7 @@
 import "./App.css";
 import { useState } from "react";
 import NavBar from "./components/NavBar/NavBar";
-import ContactUs from "./pages/ContactUs";
+import ContactUs from "./pages/contactUs/ContactUs";
 import StorePage from "./pages/store/store-page";
 import ItemDisplay from "./components/itemDisplay/ItemDisplay";
 import {
