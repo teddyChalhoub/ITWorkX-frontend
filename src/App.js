@@ -1,29 +1,41 @@
 import "./App.css";
-import {useState} from "react";
+import { useState } from "react";
 import NavBar from "./components/NavBar/NavBar";
 import ContactUs from "./pages/ContactUs";
 import StorePage from "./pages/store/store-page";
 import ItemDisplay from "./components/itemDisplay/ItemDisplay";
-import { BrowserRouter as Router, Switch, Route,withRouter } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  withRouter,
+} from "react-router-dom";
 import useFetch from "./utils/useFetch.js";
 
 const App = () => {
+  const [searchValue, setSearchValue] = useState("");
+  const fetchSearchValue = (value) => {
+    setSearchValue(value);
 
-
+  };
   return (
     <div className="App">
       <Router>
-        <NavBar numberOfItemsInCart={1} />
+        <NavBar numberOfItemsInCart={1} searchValue={searchValue} fetchSearchValue={fetchSearchValue} />
         <Switch>
           <Route path="/" component={""} exact />
           <Route
             path="/store"
             render={(props) => {
-              return <StorePage {...props} />;
+              return <StorePage {...props} searchValue={searchValue} />;
             }}
             exact
           />
-          <Route path="/store/:title"  render={props=><ItemDisplay {...props}  />} exact/>
+          <Route
+            path="/store/:title"
+            render={(props) => <ItemDisplay {...props} />}
+            exact
+          />
           <Route path="/contact-us" component={ContactUs} exact />
           <Route path="/services" component={""} exact />
           <Route path="/about-us" component={""} exact />

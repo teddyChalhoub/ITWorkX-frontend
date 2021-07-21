@@ -6,7 +6,7 @@ import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import "./Navbar.css";
 import logo from "./LOGO.png";
 
-function NavBar({ numberOfItemsInCart }) {
+function NavBar({ numberOfItemsInCart, fetchSearchValue, searchValue }) {
   const [visible, setVisible] = useState(false);
 
   const handleMouseEnter = (e) => {
@@ -19,6 +19,10 @@ function NavBar({ numberOfItemsInCart }) {
     setVisible(false);
   };
 
+  const handleInputData = (e) => {
+    fetchSearchValue(e.target.value);
+  };
+
   return (
     <div>
       <header>
@@ -29,6 +33,8 @@ function NavBar({ numberOfItemsInCart }) {
               className="app__navbar__input"
               type="text"
               placeholder="Search"
+              value={searchValue}
+              onChange={handleInputData}
             />
           </div>
           <div className="navbar__menu">

@@ -7,7 +7,7 @@ import useFetch from "../../utils/useFetch.js";
 import { Route, Link, Switch, withRouter } from "react-router-dom";
 import Slider from "../../components/ProductSlider/Slider.js";
 
-const Store = () => {
+const Store = ({ searchValue }) => {
   const {
     loading,
     data: product,
@@ -15,15 +15,17 @@ const Store = () => {
     error,
   } = useFetch("http://localhost:5000/category");
 
-
   const [categories, setCategories] = useState([]);
   const [subCategories, setSubCategories] = useState([]);
+  const [productData, setProductData] = useState([]);
 
   useEffect(() => {
     setCategories("");
     setSubCategories("");
+    setProductData([]);
     if (product.length > 0) {
       storeCategory(product[0].categories);
+      storeProducts(product[0].categories);
     }
   }, [product]);
 
@@ -48,6 +50,17 @@ const Store = () => {
     });
   };
 
+  const storeProducts = (item) => {
+    item.map((category) => {
+      if (category.product.length !== 0) {
+        category.product.map((value) => {
+          console.log("store Products", value);
+          setProductData((res) => [...res, value]);
+        });
+      }
+    });
+  };
+  console.log("product state", productData);
   return (
     <>
       {loading ? (
@@ -56,7 +69,7 @@ const Store = () => {
         <div>{message}</div>
       ) : (
         <>
-          {product && product[0].Carousel && <Slider images={product[0].Carousel} />}
+          {product && product[0] && <Slider images={product[0].Carousel} />}
           <div className="wrapper flex-row">
             <div className="store__page--categories">
               {console.log("categories", categories)}
@@ -68,30 +81,25 @@ const Store = () => {
               )}
             </div>
             <div className="product__card flex">
-              {product &&
-                product[0].categories.map((res) => {
-                  return (
-                    res.product &&
-                    res.product.map((product) => {
-                      return (
-                        <div
-                          key={product._id}
-                          className="store__page-each-card"
-                        >
-                          {product.images.length > 0 ? (
-                            <Card
-                              image={product.images[0].url}
-                              title={product.title}
-                              price={product.price}
-                            />
-                          ) : (
-                            <Card title={product.title} price={product.price} />
-                          )}
-                        </div>
-                      );
-                    })
-                  );
-                })}
+
+              {productData &&
+                productData
+                  .filter((value) => new RegExp(searchValue).test(value.title))
+                  .map((product) => {
+                    return (
+                      <div key={product._id} className="store__page-each-card">
+                        {product.images.length > 0 ? (
+                          <Card
+                            image={product.images[0].url}
+                            title={product.title}
+                            price={product.price}
+                          />
+                        ) : (
+                          <Card title={product.title} price={product.price} />
+                        )}
+                      </div>
+                    );
+                  })}
             </div>
           </div>
         </>
