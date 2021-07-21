@@ -50,11 +50,15 @@
 
 .user__icon {
   cursor: pointer;
-  margin-left: 2rem;
+  /* margin-left: 2rem; */
 }
 
 .app__user__icon {
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: auto;
 }
 
 .app__user__log-in {
@@ -62,7 +66,10 @@
   position: absolute;
   display: flex;
   width: max-content;
+  justify-content: flex-start;
+  align-items: center;
   column-gap: 10px;
+  z-index: 1;
 }
 
 .app__user__log-in a {
