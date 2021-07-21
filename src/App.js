@@ -3,7 +3,6 @@ import { GrDashboard } from "react-icons/gr";
 import NavBar from "./components/NavBar";
 import ContactUs from "./pages/ContactUs";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Text from "./pages/Text";
 
 const App = () => {
   return (
@@ -20,7 +19,6 @@ const App = () => {
           <Route path="/cart" component={""} exact />
         </Switch>
       </Router>
-      <Text />
       {/* <Router>
         <ContactUs>
           <Switch>
