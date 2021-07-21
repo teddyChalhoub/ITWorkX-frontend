@@ -1,9 +1,7 @@
 .app__navbar {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   padding: 1rem;
-  /* flex-direction: row;
-    text-decoration: none; */
   background-color: #009688;
   color: black;
 }
@@ -15,17 +13,24 @@
 .app__navbar__img {
   display: flex;
   flex-wrap: wrap;
+  /* margin: 2rem; */
+}
+
+.app__navbar__img img {
+  border-radius: 50%;
+  margin-left: 1rem;
 }
 .app__navbar__input {
-  width: 30%;
+  width: 40%;
   height: 10%;
   margin: auto 0 auto 1rem;
   background-color: white;
   color: black;
-  padding: 0.5em;
+  padding: 0.7rem;
   border: 0;
   border-radius: 2px;
   outline: none;
+  transform: translateX(10%);
 }
 
 .navbar__menu {
@@ -50,7 +55,6 @@
 
 .user__icon {
   cursor: pointer;
-  /* margin-left: 2rem; */
 }
 
 .app__user__icon {
@@ -65,18 +69,21 @@
   top: 100%;
   position: absolute;
   display: flex;
+  flex-wrap: wrap;
   width: max-content;
-  justify-content: flex-start;
-  align-items: center;
-  column-gap: 10px;
+  /* column-gap: 0.3rem; */
   z-index: 1;
+  background-color: #fff;
+  border-radius: 0.5rem;
 }
 
-.app__user__log-in a {
+.app__user__log-in > a {
   text-decoration: none;
-  color: white;
+  color: #000;
+  padding: 0.3rem;
 }
 
 .app__log-in .app__sign-up {
   cursor: pointer;
+  border-left: 0.1rem solid #000;
 }
