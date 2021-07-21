@@ -14,7 +14,7 @@ const Store = () => {
     message,
     error,
   } = useFetch("http://localhost:5000/category");
-  console.log({ product: product });
+
 
   const [categories, setCategories] = useState([]);
   const [subCategories, setSubCategories] = useState([]);
@@ -80,7 +80,7 @@ const Store = () => {
                         >
                           {product.images.length > 0 ? (
                             <Card
-                              image={product.images[1].url}
+                              image={product.images[0].url}
                               title={product.title}
                               price={product.price}
                             />

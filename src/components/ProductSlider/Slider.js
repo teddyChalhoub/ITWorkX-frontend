@@ -46,6 +46,7 @@ export default function Slider(props) {
             </div>
           );
         })}
+        
       <BtnSlider moveSlide={nextSlide} direction={"next"} />
       <BtnSlider moveSlide={prevSlide} direction={"prev"} />
 
