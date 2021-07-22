@@ -9,9 +9,7 @@ const Card = (props) => {
   };
 
   return (
-    
     <div className="card__wrapper">
-      {console.log("newItem",props.newItem)}
       <div className="container__image">
         {props.image ? (
           <img

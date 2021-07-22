@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import Card from "../../components/card/card.js";
 import SubCategories from "../../components/category/category-component.js";
 import "./store-page.css";
-import ItemDisplay from "../../components/itemDisplay/ItemDisplay.js";
 import useFetch from "../../utils/useFetch.js";
 import { Route, Link, Switch, withRouter } from "react-router-dom";
 import Slider from "../../components/ProductSlider/Slider.js";
@@ -61,10 +60,36 @@ const Store = ({ searchValue }) => {
   };
 
   const handleCategoryProducts = (value) => {
+    setProductData([]);
     product[0].categories.map((response) => {
       if (response.name === value) {
-        setProductData([]);
         setProductData(response.product);
+      }
+    });
+  };
+
+  const handleNewItemProducts = () => {
+    setProductData([]);
+    product[0].categories.map((category) => {
+      if (category.product.length !== 0) {
+        category.product.map((res) => {
+          if (res.newItem) {
+            setProductData((response) => [...response, res]);
+          }
+        });
+      }
+    });
+  };
+
+  const handleDiscountedItemProducts = () => {
+    setProductData([]);
+    product[0].categories.map((category) => {
+      if (category.product.length !== 0) {
+        category.product.map((res) => {
+          if (res.discount !== undefined) {
+            setProductData((response) => [...response, res]);
+          }
+        });
       }
     });
   };
@@ -87,7 +112,13 @@ const Store = ({ searchValue }) => {
                   handleCategoryProduct={handleCategoryProducts}
                 />
               )}
+              <div className="wrapper__filter">
+                <p>Filter</p>
+                <a onClick={handleNewItemProducts}>New</a>
+                <a onClick={handleDiscountedItemProducts}>Discounted</a>
+              </div>
             </div>
+
             <div className="product__card flex">
               {productData &&
                 productData
