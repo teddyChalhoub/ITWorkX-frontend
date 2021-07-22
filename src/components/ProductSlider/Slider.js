@@ -1,16 +1,21 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./Slider.css";
 import BtnSlider from "./ButtonsSlider/BtnSlider";
 // import dataSlider from './dataSlider'
 
 export default function Slider(props) {
+
   const [slideIndex, setSlideIndex] = useState(1);
   const [dataSlider, setDataSlider] = useState([]);
 
-  useEffect(() => {
-    setDataSlider(props.images);
-    console.log(dataSlider);
-  });
+  const timeOutRef = useRef(null);
+
+  const resetTimeout = () => {
+    if (timeOutRef.current) {
+      clearTimeout(timeOutRef.current);
+    }
+  };
+
   const nextSlide = () => {
     if (slideIndex !== dataSlider.length) {
       setSlideIndex(slideIndex + 1);
@@ -31,10 +36,28 @@ export default function Slider(props) {
     setSlideIndex(index);
   };
 
+  useEffect(() => {
+    resetTimeout();
+    timeOutRef.current = setTimeout(() => {
+      setSlideIndex((prevIndex) =>
+        prevIndex === dataSlider.length ? 1 : prevIndex + 1
+      );
+    }, 2500);
+
+    return () => {
+      resetTimeout();
+    };
+  }, [slideIndex]);
+
+  useEffect(() => {
+    setDataSlider(props.images);
+  });
+
   return (
     <div className="container-slider">
       {dataSlider &&
         dataSlider.map((obj, index) => {
+
           return (
             <div
               key={obj.id}
