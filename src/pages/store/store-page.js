@@ -5,6 +5,7 @@ import "./store-page.css";
 import useFetch from "../../utils/useFetch.js";
 import { Route, Link, Switch, withRouter } from "react-router-dom";
 import Slider from "../../components/ProductSlider/Slider.js";
+import Loading from "../../components/loading/loading";
 
 const Store = ({ searchValue }) => {
   const {
@@ -97,7 +98,7 @@ const Store = ({ searchValue }) => {
   return (
     <>
       {loading ? (
-        <div>Loading....</div>
+        <Loading />
       ) : error ? (
         <div>{message}</div>
       ) : (
