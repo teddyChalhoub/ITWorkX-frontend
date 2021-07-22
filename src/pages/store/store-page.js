@@ -25,7 +25,7 @@ const Store = ({ searchValue }) => {
     setProductData([]);
     if (product.length > 0) {
       storeCategory(product[0].categories);
-      storeProducts(product[0].categories);
+      storeProducts();
     }
   }, [product]);
 
@@ -50,8 +50,9 @@ const Store = ({ searchValue }) => {
     });
   };
 
-  const storeProducts = (item) => {
-    item.map((category) => {
+  const storeProducts = () => {
+    setProductData([]);
+    product[0].categories.map((category) => {
       if (category.product.length !== 0) {
         category.product.map((value) => {
           setProductData((res) => [...res, value]);
@@ -115,8 +116,9 @@ const Store = ({ searchValue }) => {
               )}
               <div className="wrapper__filter">
                 <p>Filter</p>
-                <a onClick={handleNewItemProducts}>New</a>
-                <a onClick={handleDiscountedItemProducts}>Discounted</a>
+                <a onClick={storeProducts}>All Products</a>
+                <a onClick={handleNewItemProducts}>New Products</a>
+                <a onClick={handleDiscountedItemProducts}>Discounted Products</a>
               </div>
             </div>
 
