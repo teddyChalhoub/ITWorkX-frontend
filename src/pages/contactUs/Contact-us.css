@@ -1,5 +1,14 @@
 .app__form {
   width: 100%;
+  background-color: white;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 0.438rem 1.875rem -0.625rem #5c8986;
+}
+
+.app__form h1,
+.app__contact-info .contact-1 h1 {
+  margin-top: 0;
 }
 
 .email,
@@ -20,11 +29,17 @@
 .topic {
   cursor: pointer;
   background-color: white;
+  padding: 1rem;
 }
 
 .comment {
   height: 120px;
   cursor: pointer;
+}
+
+.comment:focus,
+.topic:focus {
+  outline: none;
 }
 
 .email,
@@ -39,12 +54,13 @@
 }
 
 .btn {
-  background-color: rgb(104, 103, 103);
+  background-color: #486b68;
   border-radius: 4px;
-  color: black;
+  color: white;
   padding: 10px 20px;
   text-align: center;
-  display: inline-block;
+  /* display: inline-block; */
+  border: 0;
   cursor: pointer;
 }
 
@@ -59,6 +75,8 @@
   padding-bottom: 30px;
   margin-top: 30px;
   margin-bottom: 30px;
+  border-radius: 0.5rem;
+  box-shadow: 0 0.438rem 1.875rem -0.625rem #5c8986;
 }
 
 .container__contact-us {
@@ -79,4 +97,16 @@
 
 .address {
   margin-bottom: 12%;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
 }
