@@ -1,17 +1,19 @@
 import React, { useState } from "react";
 import CardQuantity from "../cardQuantity/cardQuantity";
 import "./card.css";
+import newIcon from "./icons/new.png";
 
 const Card = (props) => {
-
-  const fetchQuantity = (value)=>{
-      console.log({value});
-  }
+  const fetchQuantity = (value) => {
+    console.log({ value });
+  };
 
   return (
+    
     <div className="card__wrapper">
+      {console.log("newItem",props.newItem)}
       <div className="container__image">
-        {props.image? (
+        {props.image ? (
           <img
             onClick={() => {
               window.open(`/store/${props.title}`);
@@ -35,7 +37,7 @@ const Card = (props) => {
           <div className="center__price_quantity">
             <p>{props.price}$/Piece</p>
 
-            <CardQuantity fetchQuantity={fetchQuantity}/>
+            <CardQuantity fetchQuantity={fetchQuantity} />
           </div>
           <input
             type="button"
@@ -44,6 +46,9 @@ const Card = (props) => {
           />
         </div>
       </div>
+      {props.newItem ? (
+        <img className="card__new__icon" src={newIcon} alt="New Icon" />
+      ) : null}
     </div>
   );
 };

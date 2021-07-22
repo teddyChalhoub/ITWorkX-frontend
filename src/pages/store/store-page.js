@@ -93,16 +93,22 @@ const Store = ({ searchValue }) => {
                 productData
                   .filter((value) => new RegExp(searchValue).test(value.title))
                   .map((product) => {
+                    console.log();
                     return (
                       <div key={product._id} className="store__page-each-card">
                         {product.images.length > 0 ? (
                           <Card
+                            newItem={product.newItem}
                             image={product.images[0].url}
                             title={product.title}
                             price={product.price}
                           />
                         ) : (
-                          <Card title={product.title} price={product.price} />
+                          <Card
+                            newItem={product.newItem}
+                            title={product.title}
+                            price={product.price}
+                          />
                         )}
                       </div>
                     );
