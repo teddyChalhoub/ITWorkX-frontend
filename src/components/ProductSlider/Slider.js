@@ -7,10 +7,10 @@ export default function Slider(props) {
   const [slideIndex, setSlideIndex] = useState(1);
   const [dataSlider, setDataSlider] = useState([]);
 
-  useEffect(()=>{
-      setDataSlider(props.images);
-      console.log(dataSlider)
-  })
+  useEffect(() => {
+    setDataSlider(props.images);
+    console.log(dataSlider);
+  });
   const nextSlide = () => {
     if (slideIndex !== dataSlider.length) {
       setSlideIndex(slideIndex + 1);
@@ -46,7 +46,7 @@ export default function Slider(props) {
             </div>
           );
         })}
-        
+
       <BtnSlider moveSlide={nextSlide} direction={"next"} />
       <BtnSlider moveSlide={prevSlide} direction={"prev"} />
 

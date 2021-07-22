@@ -54,13 +54,21 @@ const Store = ({ searchValue }) => {
     item.map((category) => {
       if (category.product.length !== 0) {
         category.product.map((value) => {
-          console.log("store Products", value);
           setProductData((res) => [...res, value]);
         });
       }
     });
   };
-  console.log("product state", productData);
+
+  const handleCategoryProducts = (value) => {
+    product[0].categories.map((response) => {
+      if (response.name === value) {
+        setProductData([]);
+        setProductData(response.product);
+      }
+    });
+  };
+
   return (
     <>
       {loading ? (
@@ -72,16 +80,15 @@ const Store = ({ searchValue }) => {
           {product && product[0] && <Slider images={product[0].Carousel} />}
           <div className="wrapper flex-row">
             <div className="store__page--categories">
-              {console.log("categories", categories)}
               {categories && (
                 <SubCategories
                   categories={categories}
                   subCategories={subCategories}
+                  handleCategoryProduct={handleCategoryProducts}
                 />
               )}
             </div>
             <div className="product__card flex">
-
               {productData &&
                 productData
                   .filter((value) => new RegExp(searchValue).test(value.title))

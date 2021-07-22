@@ -28,11 +28,6 @@
   cursor: pointer;
 }
 
-.categories__left-border a {
-  text-decoration: none;
-  margin-bottom: 0.2rem;
-}
-
 .categories__left-border:hover {
   border-left: 0.3rem solid #5c8986;
   border-radius: 0.15rem;
