@@ -7,7 +7,6 @@ import useFetch from "../../utils/useFetch.js";
 import ProductImages from "../productImages/productImages";
 
 const ItemDisplay = () => {
-
   const [quantity, setQuantity] = useState(1);
   const [images, setImages] = useState();
 
@@ -23,7 +22,7 @@ const ItemDisplay = () => {
     message,
     error,
   } = useFetch(`http://localhost:5000/product/${title}`);
-
+  console.log(product);
   useEffect(() => {
     setImages(product.images);
   }, [product]);

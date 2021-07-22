@@ -96,6 +96,22 @@ const Store = ({ searchValue }) => {
     });
   };
 
+  const sortProductData = () => {
+    productData.sort((a, b) => {
+      let x = a.createdAt.toLowerCase();
+      let y = b.createdAt.toLowerCase();
+      if (x < y) {
+        return 1;
+      }
+      if (x > y) {
+        return -1;
+      }
+      return 0;
+    });
+
+    return productData;
+  };
+
   return (
     <>
       {loading ? (
@@ -118,13 +134,15 @@ const Store = ({ searchValue }) => {
                 <p>Filter</p>
                 <a onClick={storeProducts}>All Products</a>
                 <a onClick={handleNewItemProducts}>New Products</a>
-                <a onClick={handleDiscountedItemProducts}>Discounted Products</a>
+                <a onClick={handleDiscountedItemProducts}>
+                  Discounted Products
+                </a>
               </div>
             </div>
 
             <div className="product__card flex">
               {productData &&
-                productData
+                sortProductData()
                   .filter((value) => new RegExp(searchValue).test(value.title))
                   .map((product) => {
                     console.log();
