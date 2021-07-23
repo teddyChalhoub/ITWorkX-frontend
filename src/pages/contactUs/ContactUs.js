@@ -3,6 +3,7 @@ import "./Contact-us.css";
 import { ImFacebook2 } from "react-icons/im";
 import { GrTwitter, GrInstagram, GrLinkedin, GrYoutube } from "react-icons/gr";
 import Grid from "@material-ui/core/Grid";
+import axios from "axios";
 
 const ContactUs = () => {
   const [name, setName] = useState("");
@@ -10,16 +11,27 @@ const ContactUs = () => {
   const [email, setEmail] = useState("");
   const [topic, setTopic] = useState("");
   const [message, setMessage] = useState("");
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const emailData = {
-      name,
-      mobile,
-      email,
-      topic,
-      message,
+      name: name,
+      mobile: mobile,
+      email: email,
+      topic: topic,
+      message: message,
     };
     console.log("submitted values", emailData);
+    try {
+      const response = await axios.post(
+        "http://localhost:5000/NodeMailer/send_mail",
+        emailData
+      );
+      if (!response.data.success) throw new Error(response.data.message);
+      alert(response.data.message);
+    } catch (error) {
+      alert(error.message);
+    }
+
     // @TODO: send data email to backend
   };
   const handleNameChange = (e) => {
