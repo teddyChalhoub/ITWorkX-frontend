@@ -1,3 +1,17 @@
+.digital-solution__container {
+  background-color: #fff;
+  width: 80%;
+  margin: 0 auto;
+  box-shadow: 0 0.438rem 1.875rem -0.625rem #5c8986;
+  border-radius: 0.5rem;
+  padding: 1rem;
+}
+
+.digital-solution__container h1{
+  margin: 0;
+  margin-bottom: 2rem;
+}
+
 .app__digital-solution {
   text-align: center;
   margin-bottom: 100px;
