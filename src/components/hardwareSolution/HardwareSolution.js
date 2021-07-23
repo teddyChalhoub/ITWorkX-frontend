@@ -1,5 +1,6 @@
 import React from "react";
 import "./HardwareSolution.css";
+import { Link } from "react-router-dom";
 
 const HardwareSolution = () => {
   return (
@@ -19,9 +20,11 @@ const HardwareSolution = () => {
         sodales.
       </p>
       <div className="app__btn__shop">
-        <button className="btn__shop" type="submit">
-          CLICK HERE TO SHOP
-        </button>
+        <Link to="/store">
+          <button className="btn__shop" type="submit">
+            CLICK HERE TO SHOP
+          </button>
+        </Link>
       </div>
     </div>
   );
