@@ -12,6 +12,7 @@ import {
 } from "react-router-dom";
 import Home from "./pages/home/Home.js";
 import useFetch from "./utils/useFetch.js";
+import { Store } from "@material-ui/icons";
 
 const App = () => {
   const [searchValue, setSearchValue] = useState("");
@@ -49,7 +50,7 @@ const App = () => {
           <Route path="/sign-up" component={""} exact />
         </Switch>
       </Router>
-  
+
       {/* <Home /> */}
       {/* <Router>
         <ContactUs>
