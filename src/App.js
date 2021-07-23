@@ -10,20 +10,24 @@ import {
   Route,
   withRouter,
 } from "react-router-dom";
+import Home from "./pages/home/Home.js";
 import useFetch from "./utils/useFetch.js";
 
 const App = () => {
   const [searchValue, setSearchValue] = useState("");
   const fetchSearchValue = (value) => {
     setSearchValue(value);
-
   };
   return (
     <div className="App">
       <Router>
-        <NavBar numberOfItemsInCart={1} searchValue={searchValue} fetchSearchValue={fetchSearchValue} />
+        <NavBar
+          numberOfItemsInCart={1}
+          searchValue={searchValue}
+          fetchSearchValue={fetchSearchValue}
+        />
         <Switch>
-          <Route path="/" component={""} exact />
+          <Route path="/" component={Home} exact />
           <Route
             path="/store"
             render={(props) => {
@@ -45,6 +49,15 @@ const App = () => {
           <Route path="/sign-up" component={""} exact />
         </Switch>
       </Router>
+  
+      {/* <Home /> */}
+      {/* <Router>
+        <ContactUs>
+          <Switch>
+            <Route path="https://www.facebook.com/" />
+          </Switch>
+        </ContactUs>
+      </Router> */}
     </div>
   );
 };

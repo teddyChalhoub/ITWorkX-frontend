@@ -4,7 +4,7 @@ import SubCategories from "../../components/category/category-component.js";
 import "./store-page.css";
 import useFetch from "../../utils/useFetch.js";
 import { Route, Link, Switch, withRouter } from "react-router-dom";
-import Slider from "../../components/ProductSlider/Slider.js";
+import Slider from "../../components/ProductSlider/Slider2";
 import Loading from "../../components/loading/loading";
 
 const Store = ({ searchValue }) => {

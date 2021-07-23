@@ -1,0 +1,38 @@
+.app__HardwareSolution {
+  width: 60%;
+  height: 50%;
+  padding: 20px 50px;
+  border: 1px solid #009688;
+  margin: 16.5%;
+  margin-top: 5%;
+  margin-bottom: 3%;
+}
+
+.app__HardwareSolution__paragraph {
+  text-align: center;
+}
+
+.HardwareSolution {
+  text-align: center;
+}
+
+.app__btn__shop {
+  width: 30%;
+  margin: 0 auto;
+}
+
+.btn__shop {
+  background-color: #04aa6d;
+  color: white;
+  padding: 14px 20px;
+  margin: 50px;
+  border: none;
+  cursor: pointer;
+  width: 70%;
+  border-radius: 5px;
+  align-items: center;
+}
+
+.btn__shop:hover {
+  opacity: 0.8;
+}

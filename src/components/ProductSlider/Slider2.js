@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
-import "./Slider.css";
+import "./Slider2.css";
 import BtnSlider from "./ButtonsSlider/BtnSlider";
-// import dataSlider from './dataSlider'
 
 export default function Slider(props) {
 
@@ -54,7 +53,7 @@ export default function Slider(props) {
   });
 
   return (
-    <div className="container-slider">
+    <div className="container-slider2">
       {dataSlider &&
         dataSlider.map((obj, index) => {
 
@@ -62,7 +61,7 @@ export default function Slider(props) {
             <div
               key={obj.id}
               className={
-                slideIndex === index + 1 ? "slide active-anim" : "slide"
+                slideIndex === index + 1 ? "slide2 active-anim2" : "slide2"
               }
             >
               <img src={`http://localhost:5000${obj.url}`} />
@@ -73,11 +72,11 @@ export default function Slider(props) {
       <BtnSlider moveSlide={nextSlide} direction={"next"} />
       <BtnSlider moveSlide={prevSlide} direction={"prev"} />
 
-      <div className="container-dots">
+      <div className="container-dots2">
         {Array.from({ length: dataSlider.length }).map((item, index) => (
           <div
             onClick={() => moveDot(index + 1)}
-            className={slideIndex === index + 1 ? "dot active" : "dot"}
+            className={slideIndex === index + 1 ? "dot2 active2" : "dot2"}
           ></div>
         ))}
       </div>
