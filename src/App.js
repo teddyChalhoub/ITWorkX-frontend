@@ -11,6 +11,7 @@ import {
   withRouter,
 } from "react-router-dom";
 import Home from "./pages/home/Home.js";
+import Cart from "./pages/cart/crat-page";
 import useFetch from "./utils/useFetch.js";
 
 const App = () => {
@@ -43,13 +44,13 @@ const App = () => {
           <Route path="/contact-us" component={ContactUs} exact />
           <Route path="/services" component={""} exact />
           <Route path="/about-us" component={""} exact />
-          <Route path="/cart" component={""} exact />
+          <Route path="/cart" component={Cart} exact />
           <Route path="/picture" component={""} exact />
           <Route path="/log-in" component={""} exact />
           <Route path="/sign-up" component={""} exact />
         </Switch>
       </Router>
-  
+
       {/* <Home /> */}
       {/* <Router>
         <ContactUs>
