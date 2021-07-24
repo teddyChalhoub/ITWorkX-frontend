@@ -17,6 +17,7 @@ import secondaryFooter from './components/secondaryFooter/SecondaryFooter';
 import primaryFooter from './components/primaryFooter/PrimaryFooter'; 
 import aboutUs from './pages/aboutUs/AboutUs';
 import TeamSection from './components/teamSection/TeamSection';
+import Service from "./pages/service/service-page"
 
 
 const App = () => {
@@ -49,7 +50,7 @@ const App = () => {
             exact
           />
           <Route path="/contact-us" component={ContactUs} exact />
-          <Route path="/services" component={""} exact />
+          <Route path="/services" component={Service} exact />
           <Route path="/about-us" component={aboutUs} exact />
           <Route path="/cart" component={""} exact />
           <Route path="/picture" component={""} exact />

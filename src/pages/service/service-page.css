@@ -1,0 +1,32 @@
+.service_wrapper {
+  text-align: center;
+  height: fit-content;
+}
+.main {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 3rem;
+  align-items: center;
+  background-color: white;
+  border-radius: 0.5rem;
+  box-shadow: 0 0.438rem 1.875rem -0.625rem #5c8986;
+}
+.main .card_image_flex {
+  flex: 50%;
+}
+.main .card_image_flex img {
+  width: 100%;
+  border-top-right-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+}
+.main .card_details_flex {
+  flex: 50%;
+}
+
+.p_first {
+  background-color: white;
+  border-radius: 0.5rem;
+  box-shadow: 0 0.438rem 1.875rem -0.625rem #5c8986;
+  margin: 3rem;
+  padding: 2rem;
+}
