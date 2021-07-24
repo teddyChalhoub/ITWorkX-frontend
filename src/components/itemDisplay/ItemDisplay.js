@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
 import CardQuantity from "../cardQuantity/cardQuantity";
+import { Link } from "react-router-dom";
 import "./ItemDisplay.css";
 import { withRouter, useParams } from "react-router-dom";
 import useFetch from "../../utils/useFetch.js";
 import ProductImages from "../productImages/productImages";
+import axios from "axios";
 
 const ItemDisplay = () => {
-  const [quantity, setQuantity] = useState(1);
   const [images, setImages] = useState();
+  const [quantity, setQuantity] = useState(1);
+  const [productId, setProductId] = useState("");
+  const [totalPrice, setTotalPrice] = useState(0);
 
   const { title } = useParams();
 
@@ -26,6 +29,49 @@ const ItemDisplay = () => {
   useEffect(() => {
     setImages(product.images);
   }, [product]);
+
+  const handleAddToCart = async () => {
+    const data = {
+      product_id: productId,
+      quantity: quantity,
+      totalPrice: totalPrice,
+    };
+
+    try {
+      const response = await axios.post(
+        "http://localhost:5000/orderItem/add",
+        data,
+        {
+          headers: {
+            "auth-token":
+              "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGZiZjk3ZjFhOWY4NDNlZTM2NDgyY2EiLCJpYXQiOjE2MjcxMzAwODV9.cwN1RlnhlnAj5vv47RgZ2XyNwr31BMsvEEfQjnVt6bg",
+          },
+        }
+      );
+
+      if (!response.data.success)
+        throw new Error("Only Logged in user are allowed");
+      alert("added to cart successfully");
+    } catch (err) {
+      alert(err.message);
+    }
+  };
+
+  const handleTotalPrice = () => {
+    if (parseInt(product.discount) !== undefined) {
+      setTotalPrice(
+        product.price * (parseInt(product.discount) / 100) * quantity
+      );
+    } else {
+      setTotalPrice(product.price * quantity);
+    }
+  };
+
+  useEffect(() => {
+    console.log(product);
+    setProductId(product._id);
+    handleTotalPrice();
+  }, [quantity]);
 
   return (
     <>
@@ -79,8 +125,10 @@ const ItemDisplay = () => {
                   )}
                 </div>
                 <div className="item__details-card--buttons">
-                  <button>Add to cart</button>
-                  <button>Buy now</button>
+                  <button onClick={handleAddToCart}>Add to cart</button>
+                  <Link to="/cart" onClick={handleAddToCart}>
+                    Buy now
+                  </Link>
                 </div>
               </div>
             </div>

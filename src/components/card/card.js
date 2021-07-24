@@ -1,12 +1,57 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import CardQuantity from "../cardQuantity/cardQuantity";
 import "./card.css";
 import newIcon from "./icons/new.png";
+import axios from "axios";
 
 const Card = (props) => {
-  const fetchQuantity = (value) => {
-    console.log({ value });
+  const [quantity, setQuantity] = useState(1);
+  const [productId, setProductId] = useState("");
+  const [totalPrice, setTotalPrice] = useState(0);
+
+  const handleAddToCart = async () => {
+    const data = {
+      product_id: productId,
+      quantity: quantity,
+      totalPrice: totalPrice,
+    };
+
+    try {
+      const response = await axios.post(
+        "http://localhost:5000/orderItem/add",
+        data,
+        {
+          headers: {
+            "auth-token":
+              "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGZiZjk3ZjFhOWY4NDNlZTM2NDgyY2EiLCJpYXQiOjE2MjcxMjYxNDh9.7dTpaAG_0q492Pf2stNWaQWdwCL4iTOfvOfL1w_BZvY",
+          },
+        }
+      );
+
+      if (!response.data.success) throw new Error("Only Logged in user are allowed");
+      alert("added to cart successfully")
+    } catch (err) {
+
+      alert(err.message)
+    }
   };
+
+  const fetchQuantity = (value) => {
+    setQuantity(value);
+  };
+
+  const handleTotalPrice = () => {
+    if (parseInt(props.discount) > 0) {
+      setTotalPrice(props.price * (parseInt(props.discount) / 100) * quantity);
+    }else{
+      setTotalPrice(props.price * quantity);
+    }
+  };
+
+  useEffect(() => {
+    setProductId(props.product_id);
+    handleTotalPrice();
+  }, [quantity]);
 
   return (
     <div className="card__wrapper">
@@ -41,6 +86,7 @@ const Card = (props) => {
             type="button"
             className="button__add-to-card"
             value="Add to cart"
+            onClick={handleAddToCart}
           />
         </div>
       </div>

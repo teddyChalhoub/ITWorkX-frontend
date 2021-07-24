@@ -1,8 +1,27 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./cart-page.css";
 import Cart from "../../components/cart/cart";
+import useFetch from "../../utils/useFetch";
+import Loading from "../../components/loading/loading";
 
 const CartPage = () => {
+  const {
+    loading,
+    data: userOrder,
+    message,
+    error,
+  } = useFetch("http://localhost:5000/order", {
+    headers: {
+      "auth-token":
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGZiZjk3ZjFhOWY4NDNlZTM2NDgyY2EiLCJpYXQiOjE2MjcxMzAwODV9.cwN1RlnhlnAj5vv47RgZ2XyNwr31BMsvEEfQjnVt6bg",
+    },
+  });
+
+  useEffect(() => {
+    console.log(userOrder);
+    console.log(message);
+  }, [userOrder, message]);
+
   return (
     <div className="cart__container">
       <div className="cart__container__product__details">
@@ -13,7 +32,16 @@ const CartPage = () => {
           <p>Price</p>
           <p></p>
         </div>
-        <Cart />
+        {loading ? (
+          <Loading />
+        ) : error ? (
+          <div>{message}</div>
+        ) : (
+          userOrder.map((cart) => {
+            console.log(cart);
+            return <Cart />;
+          })
+        )}
       </div>
       <div className="cart__container__payment">
         <p>Price Details</p>
