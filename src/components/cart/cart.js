@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./cart.css";
 
 const Cart = (props) => {
   console.log("cart Info", props);
+
+  const [productId, setProductId] = useState();
+ 
   return (
     <div className="cart_wrapper">
       <div className="cart__product__info--img">
@@ -23,7 +26,7 @@ const Cart = (props) => {
           <p>$ {props.orderTotalPrice}</p>
         </div>
         <div className="cart__product__info--quit">
-          <a>x</a>
+          <a onClick={() => props.handleProductId(props.productId)}>x</a>
         </div>
       </div>
     </div>

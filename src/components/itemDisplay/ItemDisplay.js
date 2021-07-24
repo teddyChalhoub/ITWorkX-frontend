@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import CardQuantity from "../cardQuantity/cardQuantity";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import "./ItemDisplay.css";
 import { withRouter, useParams } from "react-router-dom";
 import useFetch from "../../utils/useFetch.js";
@@ -12,6 +12,7 @@ const ItemDisplay = () => {
   const [quantity, setQuantity] = useState(1);
   const [productId, setProductId] = useState("");
   const [totalPrice, setTotalPrice] = useState(0);
+  const [redirect, setRedirect] = useState(false);
 
   const { title } = useParams();
 
@@ -30,7 +31,7 @@ const ItemDisplay = () => {
     setImages(product.images);
   }, [product]);
 
-  const handleAddToCart = async () => {
+  const handleAddToCart = async (isBuy) => {
     const data = {
       product_id: productId,
       quantity: quantity,
@@ -38,19 +39,24 @@ const ItemDisplay = () => {
     };
 
     try {
+      setRedirect(false);
       const response = await axios.post(
         "http://localhost:5000/orderItem/add",
         data,
         {
           headers: {
             "auth-token":
-              "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGZiZjk3ZjFhOWY4NDNlZTM2NDgyY2EiLCJpYXQiOjE2MjcxMzAwODV9.cwN1RlnhlnAj5vv47RgZ2XyNwr31BMsvEEfQjnVt6bg",
+              "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGZjMzRhMWZiMjk5YjYyZjA1MzdiZGIiLCJpYXQiOjE2MjcxNDMyNDUsImV4cCI6MTYyNzc0ODA0NX0.iotfcCbsqqj3kMiEtGRqRm8Qq-PRXYINohfvMP8YP8U",
           },
         }
       );
 
       if (!response.data.success)
         throw new Error("Only Logged in user are allowed");
+
+      if (isBuy) {
+        setRedirect(true);
+      }
       alert("added to cart successfully");
     } catch (err) {
       alert(err.message);
@@ -79,6 +85,8 @@ const ItemDisplay = () => {
         <div>loading..</div>
       ) : error ? (
         <div>{message}</div>
+      ) : redirect ? (
+        <Redirect to="/cart" />
       ) : (
         <>
           <div className="item__details">
@@ -125,10 +133,12 @@ const ItemDisplay = () => {
                   )}
                 </div>
                 <div className="item__details-card--buttons">
-                  <button onClick={handleAddToCart}>Add to cart</button>
-                  <Link to="/cart" onClick={handleAddToCart}>
+                  <button onClick={handleAddToCart.bind(this, false)}>
+                    Add to cart
+                  </button>
+                  <button onClick={handleAddToCart.bind(this, true)}>
                     Buy now
-                  </Link>
+                  </button>
                 </div>
               </div>
             </div>

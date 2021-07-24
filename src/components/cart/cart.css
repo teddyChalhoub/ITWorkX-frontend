@@ -45,3 +45,7 @@
 .cart__product__info--details .cart__product__info--price {
   margin-left: 3%;
 }
+
+.cart__product__info--quit > a {
+  cursor: pointer;
+}

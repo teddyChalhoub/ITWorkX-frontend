@@ -23,7 +23,7 @@ const Card = (props) => {
         {
           headers: {
             "auth-token":
-              "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGZiZjk3ZjFhOWY4NDNlZTM2NDgyY2EiLCJpYXQiOjE2MjcxMjYxNDh9.7dTpaAG_0q492Pf2stNWaQWdwCL4iTOfvOfL1w_BZvY",
+              "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGZjMzRhMWZiMjk5YjYyZjA1MzdiZGIiLCJpYXQiOjE2MjcxNDI3MTAsImV4cCI6MTYyNzc0NzUxMH0.pXJ5_WoCJSq9R3fxJuU6xo1_Ry03ISwczPEFHDnSqg0",
           },
         }
       );

@@ -1,10 +1,12 @@
-import React, { useEffect } from "react";
+import React, { useState } from "react";
 import "./cart-page.css";
 import Cart from "../../components/cart/cart";
 import useFetch from "../../utils/useFetch";
 import Loading from "../../components/loading/loading";
+import axios from "axios";
 
 const CartPage = () => {
+  const [productId, setProductId] = useState();
   const {
     loading,
     data: userOrder,
@@ -13,14 +15,33 @@ const CartPage = () => {
   } = useFetch("http://localhost:5000/order", {
     headers: {
       "auth-token":
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGZiZjk3ZjFhOWY4NDNlZTM2NDgyY2EiLCJpYXQiOjE2MjcxMzAwODV9.cwN1RlnhlnAj5vv47RgZ2XyNwr31BMsvEEfQjnVt6bg",
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGZjMzRhMWZiMjk5YjYyZjA1MzdiZGIiLCJpYXQiOjE2MjcxNDI3MTAsImV4cCI6MTYyNzc0NzUxMH0.pXJ5_WoCJSq9R3fxJuU6xo1_Ry03ISwczPEFHDnSqg0",
     },
   });
 
-  useEffect(() => {
-    console.log(userOrder);
-    console.log(message);
-  }, [userOrder, message]);
+  const handleProductId = (value) => {
+    console.log(value);
+  };
+
+  const handleDelete = async () => {
+    try {
+      const response = await axios.delete(
+        `http://localhost:5000/orderItem/delete/${productId}`,
+        {
+          headers: {
+            "auth-token":
+              "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGZjMzRhMWZiMjk5YjYyZjA1MzdiZGIiLCJpYXQiOjE2MjcxNDI3MTAsImV4cCI6MTYyNzc0NzUxMH0.pXJ5_WoCJSq9R3fxJuU6xo1_Ry03ISwczPEFHDnSqg0",
+          },
+        }
+      );
+
+      if (!response.data.success) throw new Error(response.data.message);
+      // setCount(count + 1);
+      alert("deleted from cart successfully");
+    } catch (err) {
+      alert(err.message);
+    }
+  };
 
   return (
     <div className="cart__container">
@@ -40,11 +61,12 @@ const CartPage = () => {
           userOrder &&
           userOrder.orderItem &&
           userOrder.orderItem.map((cart) => {
-            console.log(cart.products);
-            /**    */
+            console.log(cart);
             return (
               cart.products && (
                 <Cart
+                  handleProductId={handleProductId}
+                  productId={cart._id}
                   productTitle={cart.products.title}
                   productPrice={cart.products.price}
                   orderQuantity={cart.quantity}
