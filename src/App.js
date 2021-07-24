@@ -11,8 +11,13 @@ import {
   withRouter,
 } from "react-router-dom";
 import Home from "./pages/home/Home.js";
-import useFetch from "./utils/useFetch.js";
-import { Store } from "@material-ui/icons";
+import SignUp from './signUp/SignUp'
+import SignIn from './signIn/SignIn';
+import secondaryFooter from './components/secondaryFooter/SecondaryFooter';
+import primaryFooter from './components/primaryFooter/PrimaryFooter'; 
+import aboutUs from './pages/aboutUs/AboutUs';
+import TeamSection from './components/teamSection/TeamSection';
+
 
 const App = () => {
   const [searchValue, setSearchValue] = useState("");
@@ -20,6 +25,8 @@ const App = () => {
     setSearchValue(value);
   };
   return (
+    <Router>
+
     <div className="App">
       <Router>
         <NavBar
@@ -43,11 +50,11 @@ const App = () => {
           />
           <Route path="/contact-us" component={ContactUs} exact />
           <Route path="/services" component={""} exact />
-          <Route path="/about-us" component={""} exact />
+          <Route path="/about-us" component={aboutUs} exact />
           <Route path="/cart" component={""} exact />
           <Route path="/picture" component={""} exact />
-          <Route path="/log-in" component={""} exact />
-          <Route path="/sign-up" component={""} exact />
+          <Route path="/log-in" component={SignIn} exact />
+          <Route path="/sign-up" component={SignUp} exact />
         </Switch>
       </Router>
 
@@ -60,6 +67,7 @@ const App = () => {
         </ContactUs>
       </Router> */}
     </div>
+    </Router>
   );
 };
 
