@@ -10,7 +10,7 @@ footer {
     height: 30%;   
     color: white;
 }
-img{
+.logo-display img{
     width: 300px;
     margin-top: 50px;
     float: left;
