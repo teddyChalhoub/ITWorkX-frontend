@@ -37,9 +37,21 @@ const CartPage = () => {
         ) : error ? (
           <div>{message}</div>
         ) : (
-          userOrder.map((cart) => {
-            console.log(cart);
-            return <Cart />;
+          userOrder &&
+          userOrder.orderItem &&
+          userOrder.orderItem.map((cart) => {
+            console.log(cart.products);
+            /**    */
+            return (
+              cart.products && (
+                <Cart
+                  productTitle={cart.products.title}
+                  productPrice={cart.products.price}
+                  orderQuantity={cart.quantity}
+                  orderTotalPrice={cart.totalPrice}
+                />
+              )
+            );
           })
         )}
       </div>

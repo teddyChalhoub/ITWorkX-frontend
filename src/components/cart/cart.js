@@ -1,7 +1,8 @@
 import React from "react";
 import "./cart.css";
 
-const Cart = () => {
+const Cart = (props) => {
+  console.log("cart Info", props);
   return (
     <div className="cart_wrapper">
       <div className="cart__product__info--img">
@@ -10,16 +11,16 @@ const Cart = () => {
           alt=""
         />
         <div className="cart__product--product_details">
-          <p>Product Title</p>
-          <p>Price $</p>
+          <p>{props.productTitle}</p>
+          <p>$ {props.productPrice}</p>
         </div>
       </div>
       <div className="cart__product__info--details">
         <div className="cart__product__info--quantity">
-          <p>6</p>
+          <p>{props.orderQuantity}</p>
         </div>
         <div className="cart__product__info--price">
-          <p>Price $</p>
+          <p>$ {props.orderTotalPrice}</p>
         </div>
         <div className="cart__product__info--quit">
           <a>x</a>
