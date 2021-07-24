@@ -14,13 +14,11 @@ const CartPage = () => {
           <p></p>
         </div>
         <Cart />
-
       </div>
       <div className="cart__container__payment">
-        <p>Total</p>
         <p>Price Details</p>
         <div className="cart__container__payment--subTotal">
-          <p>Sub total</p>
+          <p>Subtotal</p>
           <p>Price $</p>
         </div>
         <div className="cart__container__payment--delivery">
@@ -28,11 +26,25 @@ const CartPage = () => {
           <p>10 $</p>
         </div>
         <div className="cart__container__payment--orderTotal">
-          <p>OrderTotal</p>
+          <p>Total</p>
           <p>10000$</p>
         </div>
         <button className="cart__container__btn">Place Order</button>
-        <p>Payment Method:</p>
+
+        <div className="cart__payment__method--cash">
+          <p>Payment Method</p>
+          <label className="payment" for="cash">
+            Cash on delivery
+            <input type="radio" id="cash" name="payment" />
+            <span className="checkmark"></span>
+          </label>
+
+          <label className="payment" for="omt">
+            OMT
+            <input type="radio" id="omt" name="payment" />
+            <span className="checkmark"></span>
+          </label>
+        </div>
       </div>
     </div>
   );

@@ -135,7 +135,7 @@ const Store = ({ searchValue }) => {
                 <a onClick={storeProducts}>All Products</a>
                 <a onClick={handleNewItemProducts}>New Products</a>
                 <a onClick={handleDiscountedItemProducts}>
-                  Discounted Products
+                  Offers
                 </a>
               </div>
             </div>
