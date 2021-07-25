@@ -2,7 +2,7 @@ import React from "react";
 import "../../pages/service/service-page.css";
 
 const ServiceDisplay2 = (props) => {
-  console.log(props.second)
+  console.log(props);
   return (
     <div className="services__cards--content">
       {props.second ? (
@@ -19,8 +19,8 @@ const ServiceDisplay2 = (props) => {
           </div>
           <div className="card_image_flex">
             <img
-              className="services__img img1"
-              src={"https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg"}
+              className="services__img img1 right"
+              src={`http://localhost:5000/${props.hakunamatata.imageUrl[0].url}`}
             ></img>
           </div>
         </div>
@@ -33,8 +33,8 @@ const ServiceDisplay2 = (props) => {
         >
           <div className="card_image_flex">
             <img
-              className="services__img img1"
-              src={props.hakunamatata.imageUrl}
+              className="services__img img1 left"
+              src={`http://localhost:5000/${props.hakunamatata.imageUrl[0].url}`}
             ></img>
           </div>
           <div className="card_details_flex">
