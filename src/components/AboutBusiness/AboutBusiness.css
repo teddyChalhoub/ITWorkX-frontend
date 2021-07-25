@@ -1,12 +1,9 @@
 .app__about-business {
   position: absolute;
   width: 60%;
-  /* height: 15rem; */
-  /* padding: 20px 50px; */
   padding:2rem;
   box-shadow: 0 0.438rem 1.875rem -0.625rem #5c8986;
   text-align: center;
-  /* margin: ; */
   background-color: #3e9789;
   border-radius: 0.5rem;
   bottom: 150%;

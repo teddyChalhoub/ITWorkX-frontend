@@ -38,7 +38,7 @@
 
 .app__btn__shop {
   width: 30%;
-  margin: 0 auto;
+  margin: 2rem auto;
 }
 
 .btn__shop {
@@ -48,7 +48,6 @@
   border: none;
   cursor: pointer;
   border-radius: 5px;
-  align-items: center;
 }
 
 .btn__shop:hover {
