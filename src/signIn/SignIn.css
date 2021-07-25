@@ -1,10 +1,9 @@
-
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
-*{
-  font-family: 'Playfair Display', serif;
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap");
+* {
+  font-family: "Playfair Display", serif;
 }
 
-input{
+.sign_in input {
   width: 30%;
   padding: 12px 20px;
   margin: 8px 0;
@@ -13,8 +12,8 @@ input{
   border-radius: 10px;
   box-sizing: border-box;
 }
-.button {
-  background-color:black;
+.sign_in .button {
+  background-color: black;
   border: none;
   color: white;
   padding: 15px 32px;
@@ -26,21 +25,20 @@ input{
   cursor: pointer;
   width: 10%;
 }
-.mid-center{
+.mid-center {
   padding: auto;
   margin-top: 12%;
   margin-bottom: 12%;
 }
-.mid-center h1{
+.mid-center h1 {
   font-size: 50px;
 }
-p {
-  color:black;
+.sign_in p {
+  color: black;
   list-style: none;
 }
-label { 
+.sign_in label {
   display: block;
   margin-right: 26%;
   margin-top: 20px;
-  
 }
