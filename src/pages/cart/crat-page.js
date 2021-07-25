@@ -11,18 +11,8 @@ const CartPage = () => {
   const [loading, isLoading] = useState(true);
   const [message, setMessage] = useState("");
   const [error, isError] = useState(false);
-
-  // const {
-  //   loading,
-  //   data: userOrder,
-  //   message,
-  //   error,
-  // } = useFetch("http://localhost:5000/order", {
-  //   headers: {
-  //     "auth-token":
-  //       "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGZjMzRhMWZiMjk5YjYyZjA1MzdiZGIiLCJpYXQiOjE2MjcxNDI3MTAsImV4cCI6MTYyNzc0NzUxMH0.pXJ5_WoCJSq9R3fxJuU6xo1_Ry03ISwczPEFHDnSqg0",
-  //   },
-  // });
+  const [subTotal, setSubtotal] = useState(0);
+  const [delivery, setDelivery] = useState(10);
 
   const handleProductId = (value) => {
     handleDelete(value);
@@ -75,10 +65,27 @@ const CartPage = () => {
     }
   };
 
+  const handleTotalPrice = () => {
+    let priceSum = 0;
+    if (products && products.orderItem !== undefined) {
+      console.log(products.orderItem);
+      products.orderItem.map((orderItem) => {
+        console.log(orderItem);
+        priceSum = priceSum + orderItem.totalPrice;
+      });
+      setSubtotal(priceSum);
+    }
+  };
+
   useEffect(() => {
     console.log(count);
     handleDisplayData();
+    handleTotalPrice();
   }, [count]);
+
+  useEffect(() => {
+    handleTotalPrice();
+  }, [products]);
 
   return (
     <div className="cart__container">
@@ -98,7 +105,7 @@ const CartPage = () => {
           products &&
           products.orderItem &&
           products.orderItem.map((cart) => {
-            console.log(cart);
+            // console.log(cart);
             return (
               cart.products && (
                 <Cart
@@ -118,15 +125,16 @@ const CartPage = () => {
         <p>Price Details</p>
         <div className="cart__container__payment--subTotal">
           <p>Subtotal</p>
-          <p>Price $</p>
+          {console.log(subTotal)}
+          <p>{subTotal} $</p>
         </div>
         <div className="cart__container__payment--delivery">
           <p>Delivery</p>
-          <p>10 $</p>
+          <p>{delivery} $</p>
         </div>
         <div className="cart__container__payment--orderTotal">
           <p>Total</p>
-          <p>10000$</p>
+          <p>{subTotal + delivery}$</p>
         </div>
         <button className="cart__container__btn">Place Order</button>
 
