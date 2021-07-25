@@ -8,6 +8,7 @@ import logo from "./LOGO.png";
 
 function NavBar({ numberOfItemsInCart, fetchSearchValue, searchValue }) {
   const [visible, setVisible] = useState(false);
+  const [count, setCount] = useState(0);
 
   const handleMouseEnter = (e) => {
     e.preventDefault();
@@ -62,9 +63,9 @@ function NavBar({ numberOfItemsInCart, fetchSearchValue, searchValue }) {
               About us{" "}
             </Link>
             {localStorage.getItem("token") === null ? (
-              <Link onClick={handleCartNav}>
+              <Link onClick={handleCartNav} onMouseEnter={()=>setCount(count + 1)}>
                 <Badge
-                  badgeContent={numberOfItemsInCart} //TO ADD the number of items in cart
+                  // badgeContent={numberOfItemsInCart} TO ADD the number of items in cart
                   color="secondary"
                   className="cart__icon"
                 >
@@ -75,7 +76,7 @@ function NavBar({ numberOfItemsInCart, fetchSearchValue, searchValue }) {
                 </Badge>
               </Link>
             ) : (
-              <Link to="/cart">
+              <Link to="/cart" onMouseEnter={()=>setCount(count + 1)}>
                 <Badge
                   badgeContent={numberOfItemsInCart} //TO ADD the number of items in cart
                   color="secondary"
