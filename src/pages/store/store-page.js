@@ -15,7 +15,6 @@ const Store = ({ searchValue }) => {
     message,
     error,
   } = useFetch("http://localhost:5000/category");
-  
 
   const [categories, setCategories] = useState([]);
   const [subCategories, setSubCategories] = useState([]);
@@ -64,6 +63,7 @@ const Store = ({ searchValue }) => {
   };
 
   const handleCategoryProducts = (value) => {
+    console.log(value);
     setProductData([]);
     product[0].categories.map((response) => {
       if (response.name === value) {

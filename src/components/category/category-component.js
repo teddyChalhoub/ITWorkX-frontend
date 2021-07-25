@@ -2,10 +2,12 @@ import React, { useEffect, useState } from "react";
 import "./category-component.css";
 
 const SubCategories = (props) => {
-
+  console.log(props.categories);
+  console.log(props.subCategories);
   const [isShown, setIsShown] = useState({
     visibility: "none",
   });
+  const [subCategories, setSubcategories] = useState([]);
 
   const handleCategoryName = (e, value) => {
     e.preventDefault();
@@ -21,7 +23,6 @@ const SubCategories = (props) => {
             return (
               <div
                 key={index}
-                onClick={(e) => handleCategoryName(e,category.category)}
                 className="categories__left-border"
                 onMouseEnter={() => {
                   setIsShown({
@@ -32,33 +33,40 @@ const SubCategories = (props) => {
                   setIsShown({ visibility: "none" });
                 }}
               >
-                {category.category}
+                <div onClick={(e) => handleCategoryName(e, category.category)}>
+                  {category.category}
+                </div>
 
-                {props.subCategories &&
-                  props.subCategories.map((subCategory) => {
-                    if (subCategory.parent_category === category.category) {
-
-                      return (
-                        <h3
-                          className="subCategory__display"
-                          onMouseEnter={() =>
-                            setIsShown({
-                              visibility: "block",
-                            })
-                          }
-                          onMouseLeave={() =>
-                            setIsShown({ visibility: "none" })
-                          }
-                          style={{
-                            height: `${props.categories.length * 2.638}rem`,
-                            display: isShown.visibility,
-                          }}
-                        >
-                          {subCategory.category}
-                        </h3>
-                      );
-                    }
-                  })}
+                <div
+                  className="subCategory__display"
+                  onMouseEnter={() =>
+                    setIsShown({
+                      visibility: "block",
+                    })
+                  }
+                  onMouseLeave={() => setIsShown({ visibility: "none" })}
+                  style={{
+                    display: isShown.visibility,
+                  }}
+                >
+                  {props.subCategories &&
+                    props.subCategories.map((subCategory) => {
+                      console.log(subCategory.parent_category);
+                      console.log(category.category);
+                      if (subCategory.parent_category === category.category) {
+                        console.log("entered");
+                        return (
+                          <h3
+                            onClick={(e) =>
+                              props.handleCategoryProduct(subCategory.category)
+                            }
+                          >
+                            {subCategory.category}
+                          </h3>
+                        );
+                      }
+                    })}
+                </div>
               </div>
             );
           })}
