@@ -6,16 +6,17 @@
   padding-bottom: 1rem;
 }
 .logo-display img {
-  width: 18%;
+  width: 15%;
   height: 50%;
-  margin-top: 1.5%;
+  margin-top: 3%;
   float: left;
-  margin-left: 50px;
-  border-radius: 10px;
+  margin: 2rem 4rem 0 2rem;
+
   background-color: #8bddd0;
   border-radius: 50%;
 }
 .row {
+  width: 62%;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -23,19 +24,19 @@
 .col-1,
 .col-2,
 .col-3 {
-  width: 27%;
-  /* margin-top: 1.5rem; */
+  flex: 33%;
 }
+
 .row h3 {
   margin-top: 40px;
   margin-bottom: 12px;
   font-weight: bold;
-  font-size: 30px;
+  font-size: 25px;
   padding-right: 5rem;
   color: white;
 }
 .row ul {
-  padding-left: 15px;
+  padding-left: 5px;
   list-style: none;
   line-height: 1.6;
   font-size: 14px;
@@ -49,23 +50,22 @@
   color: white;
   margin-top: 70px;
   text-align: center;
-  margin-left: 150px;
   margin-bottom: 0;
 }
-.container-bottom {
-  display: inline;
-}
+
 .bottom-subs {
   position: absolute;
   width: 23%;
   float: right;
-  bottom: 1rem;
+  top: 3.5rem;
   right: 0;
 }
 .bottom-subs p {
   color: white;
 }
 .bottom-subs input {
+  display: block;
+  width: 90%;
   height: 2rem;
   border-radius: 0.3rem;
   border: 0;
@@ -75,8 +75,8 @@
 }
 
 .bottom-subs button {
-  margin-left: 20px;
-  width: 5rem;
+  margin: 20px 0;
+  width: 50%;
   height: 2rem;
   border: 0;
   border-radius: 0.3rem;
