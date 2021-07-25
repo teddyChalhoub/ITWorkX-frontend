@@ -23,6 +23,10 @@ function NavBar({ numberOfItemsInCart, fetchSearchValue, searchValue }) {
     fetchSearchValue(e.target.value);
   };
 
+  const handleSignOutBtn = () => {
+    localStorage.removeItem("token");
+  };
+
   return (
     <div>
       <header>
@@ -77,21 +81,34 @@ function NavBar({ numberOfItemsInCart, fetchSearchValue, searchValue }) {
                 />
               </Link>
               <div className="app__user__log-in">
-                <Link
-                  className="app__log-in"
-                  style={{ display: visible ? "block" : "none" }}
-                  to="/log-in"
-                >
-                  Log In
-                </Link>
+                {console.log(localStorage.getItem("token") === null)}
+                {localStorage.getItem("token") === null ? (
+                  <>
+                    <Link
+                      className="app__log-in"
+                      style={{ display: visible ? "block" : "none" }}
+                      to="/log-in"
+                    >
+                      Log In
+                    </Link>
 
-                <Link
-                  className="app__sign-up"
-                  style={{ display: visible ? "block" : "none" }}
-                  to="/sign-up"
-                >
-                  Sign Up
-                </Link>
+                    <Link
+                      className="app__sign-up"
+                      style={{ display: visible ? "block" : "none" }}
+                      to="/sign-up"
+                    >
+                      Sign Up
+                    </Link>
+                  </>
+                ) : (
+                  <Link
+                    onClick={handleSignOutBtn}
+                    style={{ display: visible ? "block" : "none" }}
+                    to="/"
+                  >
+                    Sign Out
+                  </Link>
+                )}
               </div>
             </div>
           </div>

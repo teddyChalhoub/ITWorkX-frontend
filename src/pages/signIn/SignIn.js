@@ -1,13 +1,53 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, Redirect, withRouter } from "react-router-dom";
 import "./SignIn.css";
 import SecondaryFooter from "../../components/secondaryFooter/SecondaryFooter";
+import axios from "axios";
 
-export default function SignIn() {
+const SignIn = (props) => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    try {
+      const data = {
+        email: email,
+        password: password,
+      };
+      const response = await axios.post(
+        "http://localhost:5000/user/login",
+        data
+      );
+      console.log(response);
+      if (!response.data.success) throw new Error(response.data.message);
+
+      localStorage.setItem("token", response.data.authToken);
+      props.history.push("/store");
+    } catch (err) {
+      alert(err.message);
+    }
+  };
+
+  const handleEmailValue = (event) => {
+    console.log("email", event.target.value);
+    event.preventDefault();
+    setEmail(event.target.value);
+  };
+
+  const handlePasswordValue = (event) => {
+    console.log("password", event.target.value);
+    event.preventDefault();
+    setPassword(event.target.value);
+  };
+
   return (
     <>
       <div className="sign_in">
-        <form className="form-sign-in" action="Sign_in_page">
+        <form
+          onSubmit={handleLogin}
+          className="form-sign-in"
+        >
           <div className="mid-center">
             <h1>Sign In </h1>
             <div className="sing_in_inputs">
@@ -15,7 +55,14 @@ export default function SignIn() {
                 Email
               </label>
               <br />
-              <input type="text" id="email" placeholder="Email" required />
+              <input
+                type="text"
+                id="email"
+                placeholder="Email"
+                onChange={handleEmailValue}
+                value={email}
+                required
+              />
               <br />
               <label for="password" className="label">
                 Password
@@ -25,11 +72,13 @@ export default function SignIn() {
                 type="password"
                 id="password"
                 placeholder="Password"
+                onChange={handlePasswordValue}
+                value={password}
                 required
               />
               <br />
             </div>
-            <input type="button" class="button" value="Sign in" />
+            <button className="sign-in-btn">Sign In</button>
             <p>Not a member yet ?</p>
             <Link to="/signup">
               <p>Sign Up</p>
@@ -40,4 +89,6 @@ export default function SignIn() {
       <SecondaryFooter />
     </>
   );
-}
+};
+
+export default withRouter(SignIn);
