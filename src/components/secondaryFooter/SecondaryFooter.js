@@ -14,20 +14,20 @@ export default function secondaryFooter() {
         <h3>Get connected with us on socia media !</h3>
       </div>
       <div className="socials">
-        <a  className="fa-icon-color" href="https://www.facebook.com/">
-          <FaFacebook  />
+        <a href="https://www.facebook.com/">
+          <FaFacebook className="fa-icon-color" />
         </a>
 
-        <a className="fa-icon-color" href="https://www.instagram.com/">
-          <FaInstagram />
+        <a href="https://www.instagram.com/">
+          <FaInstagram className="fa-icon-color" />
         </a>
 
-        <a className="fa-icon-color" href="https://www.twitter.com/">
-          <FaTwitter />
+        <a href="https://www.twitter.com/">
+          <FaTwitter className="fa-icon-color" />
         </a>
 
-        <a className="fa-icon-color" href="https://www.google.com/gmail/">
-          <FaGooglePlusG />
+        <a href="https://www.google.com/gmail/">
+          <FaGooglePlusG className="fa-icon-color" />
         </a>
       </div>
     </div>

@@ -11,12 +11,8 @@ const Home = () => {
   return (
     <div className="home__container">
       <Slider />
-      <div className="left__triangle"></div>
-      <div className="right__triangle"></div>
-
       <div className="home__about_business">
         <AboutBusiness />
-        <SignIn />
       </div>
       <DigitalSolution />
       <div className="home__hardware-solution">
