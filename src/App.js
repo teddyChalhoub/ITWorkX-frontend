@@ -1,5 +1,5 @@
 import "./App.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import NavBar from "./components/NavBar/NavBar";
 import ContactUs from "./pages/contactUs/ContactUs";
 import StorePage from "./pages/store/store-page";
@@ -19,19 +19,26 @@ import aboutUs from './pages/aboutUs/AboutUs';
 import TeamSection from './components/teamSection/TeamSection';
 import Service from "./pages/service/service-page"
 
+import Cart from "./pages/cart/crat-page";
+import useFetch from "./utils/useFetch.js";
 
 const App = () => {
   const [searchValue, setSearchValue] = useState("");
+  const [nbOrder, setNbOrder] = useState(0);
   const fetchSearchValue = (value) => {
     setSearchValue(value);
   };
+
+  useEffect(() => {
+    setNbOrder(parseInt(localStorage.getItem("nbOrders")));
+  }, [nbOrder]);
   return (
     <Router>
 
     <div className="App">
       <Router>
         <NavBar
-          numberOfItemsInCart={1}
+          numberOfItemsInCart={nbOrder}
           searchValue={searchValue}
           fetchSearchValue={fetchSearchValue}
         />
@@ -52,8 +59,7 @@ const App = () => {
           <Route path="/contact-us" component={ContactUs} exact />
           <Route path="/services" component={Service} exact />
           <Route path="/about-us" component={aboutUs} exact />
-          <Route path="/cart" component={""} exact />
-          <Route path="/picture" component={""} exact />
+          <Route path="/cart" component={Cart} exact />
           <Route path="/log-in" component={SignIn} exact />
           <Route path="/sign-up" component={SignUp} exact />
         </Switch>

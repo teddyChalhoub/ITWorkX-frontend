@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 
-const useFetch = (url) => {
+const useFetch = (url,object) => {
   const [loading, isLoading] = useState(true);
   const [data, setData] = useState([]);
   const [message, setMessage] = useState("");
@@ -9,7 +9,7 @@ const useFetch = (url) => {
 
   useEffect(() => {
     axios
-      .get(url)
+      .get(url,object)
       .then((res) => {
         if (res.data.success) {
           setMessage("");
@@ -17,7 +17,7 @@ const useFetch = (url) => {
           isLoading(false);
           isError(false);
         } else {
-          throw new Error("Check your internet connection");
+          throw new Error(res.data.message);
         }
       })
       .catch((err) => {

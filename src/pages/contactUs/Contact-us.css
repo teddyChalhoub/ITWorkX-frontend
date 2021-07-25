@@ -82,7 +82,6 @@
 .container__contact-us {
   display: flex;
   justify-content: space-evenly;
-  background-color: #f2f2f2;
   padding: 20px;
 }
 

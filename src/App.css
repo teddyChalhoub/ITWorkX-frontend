@@ -2,7 +2,13 @@
 
 * {
   font-family: "Playfair Display", serif;
-  color:#334C4A;
+  color: #334c4a;
+}
+
+body {
+  background-image: url("./utils/images/damon-lam-mxqOf6qVsLc-unsplash.jpg");
+  background-size: cover;
+  background-attachment: fixed;
 }
 
 /* .App {

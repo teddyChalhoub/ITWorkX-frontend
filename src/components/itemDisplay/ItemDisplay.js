@@ -1,14 +1,18 @@
 import React, { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
 import CardQuantity from "../cardQuantity/cardQuantity";
+import { Link, Redirect } from "react-router-dom";
 import "./ItemDisplay.css";
 import { withRouter, useParams } from "react-router-dom";
 import useFetch from "../../utils/useFetch.js";
 import ProductImages from "../productImages/productImages";
+import axios from "axios";
 
 const ItemDisplay = () => {
-  const [quantity, setQuantity] = useState(1);
   const [images, setImages] = useState();
+  const [quantity, setQuantity] = useState(1);
+  const [productId, setProductId] = useState("");
+  const [totalPrice, setTotalPrice] = useState(0);
+  const [redirect, setRedirect] = useState(false);
 
   const { title } = useParams();
 
@@ -22,10 +26,63 @@ const ItemDisplay = () => {
     message,
     error,
   } = useFetch(`http://localhost:5000/product/${title}`);
-  console.log(product);
+
   useEffect(() => {
     setImages(product.images);
   }, [product]);
+
+  const handleAddToCart = async (isBuy) => {
+    try {
+      const data = {
+        product_id: productId,
+        quantity: quantity,
+        totalPrice: totalPrice,
+      };
+
+      setRedirect(false);
+      const response = await axios.post(
+        "http://localhost:5000/orderItem/add",
+        data,
+        {
+          headers: {
+            "auth-token":
+              "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGZjMzRhMWZiMjk5YjYyZjA1MzdiZGIiLCJpYXQiOjE2MjcxNDI3MTAsImV4cCI6MTYyNzc0NzUxMH0.pXJ5_WoCJSq9R3fxJuU6xo1_Ry03ISwczPEFHDnSqg0",
+          },
+        }
+      );
+
+      if (!response.data.success)
+        throw new Error("Only Logged in user are allowed");
+
+      if (isBuy) {
+        setRedirect(true);
+      }
+      localStorage.setItem(
+        "nbOrders",
+        parseInt(localStorage.getItem("nbOrders")) + 1
+      );
+      alert("added to cart successfully");
+    } catch (err) {
+      alert(err.message);
+    }
+  };
+
+  const handleTotalPrice = () => {
+    if (parseInt(product.discount) !== undefined) {
+      setTotalPrice(
+        product.price * (parseInt(product.discount) / 100) * quantity
+      );
+    } else {
+      setTotalPrice(product.price * quantity);
+    }
+  };
+
+  useEffect(() => {
+    if (product) {
+      setProductId(product._id);
+      handleTotalPrice();
+    }
+  }, [product, quantity]);
 
   return (
     <>
@@ -33,6 +90,8 @@ const ItemDisplay = () => {
         <div>loading..</div>
       ) : error ? (
         <div>{message}</div>
+      ) : redirect ? (
+        <Redirect to="/cart" />
       ) : (
         <>
           <div className="item__details">
@@ -79,8 +138,10 @@ const ItemDisplay = () => {
                   )}
                 </div>
                 <div className="item__details-card--buttons">
-                  <button>Add to cart</button>
-                  <button>Buy now</button>
+                  <button onClick={() => handleAddToCart(false)}>
+                    Add to cart
+                  </button>
+                  <button onClick={() => handleAddToCart(true)}>Buy now</button>
                 </div>
               </div>
             </div>

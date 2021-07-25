@@ -134,9 +134,7 @@ const Store = ({ searchValue }) => {
                 <p>Filter</p>
                 <a onClick={storeProducts}>All Products</a>
                 <a onClick={handleNewItemProducts}>New Products</a>
-                <a onClick={handleDiscountedItemProducts}>
-                  Discounted Products
-                </a>
+                <a onClick={handleDiscountedItemProducts}>Offers</a>
               </div>
             </div>
 
@@ -150,16 +148,20 @@ const Store = ({ searchValue }) => {
                       <div key={product._id} className="store__page-each-card">
                         {product.images.length > 0 ? (
                           <Card
+                            product_id={product._id}
                             newItem={product.newItem}
                             image={product.images[0].url}
                             title={product.title}
                             price={product.price}
+                            discount={product.discount}
                           />
                         ) : (
                           <Card
+                            product_id={product._id}
                             newItem={product.newItem}
                             title={product.title}
                             price={product.price}
+                            discount={product.discount}
                           />
                         )}
                       </div>

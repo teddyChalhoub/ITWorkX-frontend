@@ -152,12 +152,12 @@ const ContactUs = () => {
                 <div className="address">
                   <h3>Lebanon</h3>
                   <p>Phone number: +961 3 123 456</p>
-                  <p>Adress: Kaslik, Lebanon</p>
+                  <p>Address: Kaslik, Lebanon</p>
                 </div>
                 <div className="address">
                   <h3>Saudi Arabia</h3>
                   <p>Phone number: +966 3 123 456</p>
-                  <p>Adress: Riyadh, KSA</p>
+                  <p>Address: Riyadh, KSA</p>
                 </div>
                 <div className="app__follow-us">
                   <h3 className="follow-us">Follow us</h3>

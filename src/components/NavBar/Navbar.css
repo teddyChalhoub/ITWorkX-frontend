@@ -18,6 +18,7 @@
 .app__navbar__img img {
   border-radius: 50%;
   margin-left: 1rem;
+  background-color: #8bddd0;
 }
 
 .app__navbar__input {
