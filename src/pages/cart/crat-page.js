@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./cart-page.css";
 import Cart from "../../components/cart/cart";
 import useFetch from "../../utils/useFetch";
@@ -6,27 +6,32 @@ import Loading from "../../components/loading/loading";
 import axios from "axios";
 
 const CartPage = () => {
-  const [productId, setProductId] = useState();
-  const {
-    loading,
-    data: userOrder,
-    message,
-    error,
-  } = useFetch("http://localhost:5000/order", {
-    headers: {
-      "auth-token":
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGZjMzRhMWZiMjk5YjYyZjA1MzdiZGIiLCJpYXQiOjE2MjcxNDI3MTAsImV4cCI6MTYyNzc0NzUxMH0.pXJ5_WoCJSq9R3fxJuU6xo1_Ry03ISwczPEFHDnSqg0",
-    },
-  });
+  const [count, setCount] = useState(0);
+  const [products, setProducts] = useState([]);
+  const [loading, isLoading] = useState(true);
+  const [message, setMessage] = useState("");
+  const [error, isError] = useState(false);
+
+  // const {
+  //   loading,
+  //   data: userOrder,
+  //   message,
+  //   error,
+  // } = useFetch("http://localhost:5000/order", {
+  //   headers: {
+  //     "auth-token":
+  //       "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGZjMzRhMWZiMjk5YjYyZjA1MzdiZGIiLCJpYXQiOjE2MjcxNDI3MTAsImV4cCI6MTYyNzc0NzUxMH0.pXJ5_WoCJSq9R3fxJuU6xo1_Ry03ISwczPEFHDnSqg0",
+  //   },
+  // });
 
   const handleProductId = (value) => {
-    console.log(value);
+    handleDelete(value);
   };
 
-  const handleDelete = async () => {
+  const handleDelete = async (value) => {
     try {
       const response = await axios.delete(
-        `http://localhost:5000/orderItem/delete/${productId}`,
+        `http://localhost:5000/orderItem/delete/${value}`,
         {
           headers: {
             "auth-token":
@@ -36,12 +41,44 @@ const CartPage = () => {
       );
 
       if (!response.data.success) throw new Error(response.data.message);
-      // setCount(count + 1);
+      setCount(count + 1);
       alert("deleted from cart successfully");
     } catch (err) {
       alert(err.message);
     }
   };
+
+  const handleDisplayData = async () => {
+    setMessage("");
+    isLoading(true);
+    isError(false);
+    setProducts([]);
+    try {
+      const response = await axios.get("http://localhost:5000/order", {
+        headers: {
+          "auth-token":
+            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGZjMzRhMWZiMjk5YjYyZjA1MzdiZGIiLCJpYXQiOjE2MjcxNDI3MTAsImV4cCI6MTYyNzc0NzUxMH0.pXJ5_WoCJSq9R3fxJuU6xo1_Ry03ISwczPEFHDnSqg0",
+        },
+      });
+
+      if (!response.data.success) throw new Error(response.data.message);
+      setMessage("");
+      isLoading(false);
+      isError(false);
+      setProducts(response.data.data);
+    } catch (err) {
+      setProducts([]);
+      setMessage(err.message);
+      isLoading(false);
+      isError(true);
+      alert(err.message);
+    }
+  };
+
+  useEffect(() => {
+    console.log(count);
+    handleDisplayData();
+  }, [count]);
 
   return (
     <div className="cart__container">
@@ -58,9 +95,9 @@ const CartPage = () => {
         ) : error ? (
           <div>{message}</div>
         ) : (
-          userOrder &&
-          userOrder.orderItem &&
-          userOrder.orderItem.map((cart) => {
+          products &&
+          products.orderItem &&
+          products.orderItem.map((cart) => {
             console.log(cart);
             return (
               cart.products && (

@@ -26,19 +26,19 @@ const ItemDisplay = () => {
     message,
     error,
   } = useFetch(`http://localhost:5000/product/${title}`);
-  console.log(product);
+
   useEffect(() => {
     setImages(product.images);
   }, [product]);
 
   const handleAddToCart = async (isBuy) => {
-    const data = {
-      product_id: productId,
-      quantity: quantity,
-      totalPrice: totalPrice,
-    };
-
     try {
+      const data = {
+        product_id: productId,
+        quantity: quantity,
+        totalPrice: totalPrice,
+      };
+
       setRedirect(false);
       const response = await axios.post(
         "http://localhost:5000/orderItem/add",
@@ -46,7 +46,7 @@ const ItemDisplay = () => {
         {
           headers: {
             "auth-token":
-              "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGZjMzRhMWZiMjk5YjYyZjA1MzdiZGIiLCJpYXQiOjE2MjcxNDMyNDUsImV4cCI6MTYyNzc0ODA0NX0.iotfcCbsqqj3kMiEtGRqRm8Qq-PRXYINohfvMP8YP8U",
+              "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGZjMzRhMWZiMjk5YjYyZjA1MzdiZGIiLCJpYXQiOjE2MjcxNDI3MTAsImV4cCI6MTYyNzc0NzUxMH0.pXJ5_WoCJSq9R3fxJuU6xo1_Ry03ISwczPEFHDnSqg0",
           },
         }
       );
@@ -74,10 +74,11 @@ const ItemDisplay = () => {
   };
 
   useEffect(() => {
-    console.log(product);
-    setProductId(product._id);
-    handleTotalPrice();
-  }, [quantity]);
+    if (product) {
+      setProductId(product._id);
+      handleTotalPrice();
+    }
+  }, [product, quantity]);
 
   return (
     <>
@@ -133,12 +134,10 @@ const ItemDisplay = () => {
                   )}
                 </div>
                 <div className="item__details-card--buttons">
-                  <button onClick={handleAddToCart.bind(this, false)}>
+                  <button onClick={() => handleAddToCart(false)}>
                     Add to cart
                   </button>
-                  <button onClick={handleAddToCart.bind(this, true)}>
-                    Buy now
-                  </button>
+                  <button onClick={() => handleAddToCart(true)}>Buy now</button>
                 </div>
               </div>
             </div>

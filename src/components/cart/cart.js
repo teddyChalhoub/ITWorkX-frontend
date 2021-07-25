@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import "./cart.css";
 
 const Cart = (props) => {
-  console.log("cart Info", props);
+  // console.log("cart Info", props);
 
-  const [productId, setProductId] = useState();
+  // const [productId, setProductId] = useState();
  
   return (
     <div className="cart_wrapper">
