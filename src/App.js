@@ -1,5 +1,5 @@
 import "./App.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import NavBar from "./components/NavBar/NavBar";
 import ContactUs from "./pages/contactUs/ContactUs";
 import StorePage from "./pages/store/store-page";
@@ -16,14 +16,19 @@ import useFetch from "./utils/useFetch.js";
 
 const App = () => {
   const [searchValue, setSearchValue] = useState("");
+  const [nbOrder, setNbOrder] = useState(0);
   const fetchSearchValue = (value) => {
     setSearchValue(value);
   };
+
+  useEffect(() => {
+    setNbOrder(parseInt(localStorage.getItem("nbOrders")));
+  }, [nbOrder]);
   return (
     <div className="App">
       <Router>
         <NavBar
-          numberOfItemsInCart={1}
+          numberOfItemsInCart={nbOrder}
           searchValue={searchValue}
           fetchSearchValue={fetchSearchValue}
         />

@@ -57,6 +57,10 @@ const ItemDisplay = () => {
       if (isBuy) {
         setRedirect(true);
       }
+      localStorage.setItem(
+        "nbOrders",
+        parseInt(localStorage.getItem("nbOrders")) + 1
+      );
       alert("added to cart successfully");
     } catch (err) {
       alert(err.message);

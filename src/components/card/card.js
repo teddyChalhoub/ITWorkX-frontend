@@ -28,11 +28,16 @@ const Card = (props) => {
         }
       );
 
-      if (!response.data.success) throw new Error("Only Logged in user are allowed");
-      alert("added to cart successfully")
+      if (!response.data.success)
+        throw new Error("Only Logged in user are allowed");
+      // const nbOrders = ;
+      localStorage.setItem(
+        "nbOrders",
+        parseInt(localStorage.getItem("nbOrders")) + 1
+      );
+      alert("added to cart successfully");
     } catch (err) {
-
-      alert(err.message)
+      alert(err.message);
     }
   };
 
@@ -43,7 +48,7 @@ const Card = (props) => {
   const handleTotalPrice = () => {
     if (parseInt(props.discount) > 0) {
       setTotalPrice(props.price * (parseInt(props.discount) / 100) * quantity);
-    }else{
+    } else {
       setTotalPrice(props.price * quantity);
     }
   };

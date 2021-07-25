@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./cart-page.css";
 import Cart from "../../components/cart/cart";
-import useFetch from "../../utils/useFetch";
 import Loading from "../../components/loading/loading";
 import axios from "axios";
 
@@ -31,6 +30,10 @@ const CartPage = () => {
       );
 
       if (!response.data.success) throw new Error(response.data.message);
+      localStorage.setItem(
+        "nbOrders",
+        parseInt(localStorage.getItem("nbOrders")) - 1
+      );
       setCount(count + 1);
       alert("deleted from cart successfully");
     } catch (err) {
@@ -68,9 +71,9 @@ const CartPage = () => {
   const handleTotalPrice = () => {
     let priceSum = 0;
     if (products && products.orderItem !== undefined) {
-      console.log(products.orderItem);
+
       products.orderItem.map((orderItem) => {
-        console.log(orderItem);
+
         priceSum = priceSum + orderItem.totalPrice;
       });
       setSubtotal(priceSum);
@@ -78,7 +81,7 @@ const CartPage = () => {
   };
 
   useEffect(() => {
-    console.log(count);
+
     handleDisplayData();
     handleTotalPrice();
   }, [count]);
@@ -105,7 +108,7 @@ const CartPage = () => {
           products &&
           products.orderItem &&
           products.orderItem.map((cart) => {
-            // console.log(cart);
+
             return (
               cart.products && (
                 <Cart
@@ -125,7 +128,6 @@ const CartPage = () => {
         <p>Price Details</p>
         <div className="cart__container__payment--subTotal">
           <p>Subtotal</p>
-          {console.log(subTotal)}
           <p>{subTotal} $</p>
         </div>
         <div className="cart__container__payment--delivery">
