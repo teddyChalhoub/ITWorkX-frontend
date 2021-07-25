@@ -3,6 +3,7 @@ import "./service-page.css";
 import ServiceDisplay from "../../components/ServiceDisplay/serviceDisplay1";
 import ServiceCard from "../../components/ServiceDisplay/serviceCard";
 import PrimaryFooter from "../../components/primaryFooter/PrimaryFooter";
+import Loading from "../../components/loading/loading";
 import axios from "axios";
 
 const Service = () => {
@@ -49,33 +50,22 @@ const Service = () => {
   return (
     <>
       {loading ? (
-        <div>loading...</div>
+        <Loading />
       ) : error ? (
-        <div>{message}</div>
+        alert(message)
       ) : visible ? (
         <ServiceDisplay service={service} />
       ) : (
         <div className="service_wrapper">
           <p className="p_first">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            Fringilla est ullamcorper eget nulla facilisi etiam dignissim.
-            Elementum eu facilisis sed odio morbi quis commodo odio. Quam
-            viverra orci sagittis eu volutpat. Vulputate mi sit amet mauris
-            commodo. Consectetur libero id faucibus nisl tincidunt eget nullam
-            non nisi. Elementum curabitur vitae nunc sed velit. Diam quam nulla
-            porttitor massa id neque aliquam. Dapibus ultrices in iaculis nunc
-            sed augue lacus. Felis eget velit aliquet sagittis id consectetur
-            purus ut faucibus. Sed cras ornare arcu dui vivamus arcu. Auctor eu
-            augue ut lectus arcu bibendum at. Interdum consectetur libero id
-            faucibus nisl tincidunt eget.
+          Emerging company and specialize in offer 360 degree web and digital marketing solutions to make your company become a brand in the online marketing world. From website design, web development, content marketing, our team of mavens come with solutions that bring digital revolution. Just name the services you need for your online business and we will deliver you excellent solution in a unique style.
           </p>
 
           {serviceData &&
             serviceData.map((res, index) => {
               return (
                 <ServiceCard
-                  hakunamatata={res}
+                  response={res}
                   second={index % 2 == 0}
                   handleVisibilityAndData={handleVisibilityAndData}
                 />

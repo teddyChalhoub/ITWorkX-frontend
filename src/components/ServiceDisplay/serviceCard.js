@@ -9,18 +9,18 @@ const ServiceDisplay2 = (props) => {
         <div
           className="main"
           onClick={() =>
-            props.handleVisibilityAndData(true, props.hakunamatata)
+            props.handleVisibilityAndData(true, props.response)
           }
         >
           <div className="card_details_flex">
-            <h1 className="text-center">{props.hakunamatata.title}</h1>
-            <h3 className="text-center">{props.hakunamatata.price}</h3>
-            <p className="text-center">{props.hakunamatata.description}</p>
+            <h1 className="text-center">{props.response.title}</h1>
+            <h3 className="text-center">{props.response.price}</h3>
+            <p className="text-center">{props.response.description}</p>
           </div>
           <div className="card_image_flex">
             <img
               className="services__img img1 right"
-              src={`http://localhost:5000/${props.hakunamatata.imageUrl[0].url}`}
+              src={`http://localhost:5000/${props.response.imageUrl[0].url}`}
             ></img>
           </div>
         </div>
@@ -28,19 +28,19 @@ const ServiceDisplay2 = (props) => {
         <div
           className="main"
           onClick={() =>
-            props.handleVisibilityAndData(true, props.hakunamatata)
+            props.handleVisibilityAndData(true, props.response)
           }
         >
           <div className="card_image_flex">
             <img
               className="services__img img1 left"
-              src={`http://localhost:5000/${props.hakunamatata.imageUrl[0].url}`}
+              src={`http://localhost:5000/${props.response.imageUrl[0].url}`}
             ></img>
           </div>
           <div className="card_details_flex">
-            <h1 className="text-center">{props.hakunamatata.title}</h1>
-            <h3 className="text-center">{props.hakunamatata.price}</h3>
-            <p className="text-center">{props.hakunamatata.description}</p>
+            <h1 className="text-center">{props.response.title}</h1>
+            <h3 className="text-center">{props.response.price}</h3>
+            <p className="text-center">{props.response.description}</p>
           </div>
         </div>
       )}
