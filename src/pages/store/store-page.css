@@ -1,10 +1,7 @@
-body {
-  background-color: #ededed;
-}
-
 .wrapper {
   margin: auto;
   padding: 2rem;
+  background-color: #ededed;
 }
 .store__page--categories {
   flex: 20%;
