@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import CardQuantity from "../cardQuantity/cardQuantity";
 import { Link, Redirect } from "react-router-dom";
 import "./ItemDisplay.css";
@@ -6,6 +6,7 @@ import { withRouter, useParams } from "react-router-dom";
 import useFetch from "../../utils/useFetch.js";
 import ProductImages from "../productImages/productImages";
 import axios from "axios";
+import { CountContext } from "../../utils/countContext";
 
 const ItemDisplay = () => {
   const [images, setImages] = useState();
@@ -13,6 +14,8 @@ const ItemDisplay = () => {
   const [productId, setProductId] = useState("");
   const [totalPrice, setTotalPrice] = useState(0);
   const [redirect, setRedirect] = useState(false);
+
+  const { nbOrder, setNbOrder } = useContext(CountContext);
 
   const { title } = useParams();
 
@@ -60,6 +63,7 @@ const ItemDisplay = () => {
         "nbOrders",
         parseInt(localStorage.getItem("nbOrders")) + 1
       );
+      setNbOrder(localStorage.getItem("nbOrders"));
       alert("added to cart successfully");
     } catch (err) {
       alert(err.message);

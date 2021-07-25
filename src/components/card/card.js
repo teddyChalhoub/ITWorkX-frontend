@@ -1,13 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import CardQuantity from "../cardQuantity/cardQuantity";
 import "./card.css";
 import newIcon from "./icons/new.png";
+import { CountContext } from "../../utils/countContext";
 import axios from "axios";
 
 const Card = (props) => {
   const [quantity, setQuantity] = useState(1);
   const [productId, setProductId] = useState("");
   const [totalPrice, setTotalPrice] = useState(0);
+
+  const { nbOrder, setNbOrder } = useContext(CountContext);
 
   const handleAddToCart = async () => {
     const data = {
@@ -33,6 +36,7 @@ const Card = (props) => {
         "nbOrders",
         parseInt(localStorage.getItem("nbOrders")) + 1
       );
+      setNbOrder(localStorage.getItem("nbOrders"));
       alert("added to cart successfully");
     } catch (err) {
       alert(err.message);

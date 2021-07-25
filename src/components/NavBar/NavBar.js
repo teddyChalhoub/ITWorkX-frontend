@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Badge from "@material-ui/core/Badge";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import "./Navbar.css";
 import logo from "./LOGO.png";
+import { CountContext } from "../../utils/countContext";
 
 function NavBar({ numberOfItemsInCart, fetchSearchValue, searchValue }) {
   const [visible, setVisible] = useState(false);
@@ -31,6 +32,8 @@ function NavBar({ numberOfItemsInCart, fetchSearchValue, searchValue }) {
   const handleCartNav = () => {
     alert("Only logged in are allowed");
   };
+
+  const { nbOrder, setNbOrder } = useContext(CountContext);
 
   return (
     <div>
@@ -63,12 +66,11 @@ function NavBar({ numberOfItemsInCart, fetchSearchValue, searchValue }) {
               About us{" "}
             </Link>
             {localStorage.getItem("token") === null ? (
-              <Link onClick={handleCartNav} onMouseEnter={()=>setCount(count + 1)}>
-                <Badge
-                  // badgeContent={numberOfItemsInCart} TO ADD the number of items in cart
-                  color="secondary"
-                  className="cart__icon"
-                >
+              <Link
+                onClick={handleCartNav}
+                onMouseEnter={() => setCount(count + 1)}
+              >
+                <Badge color="secondary" className="cart__icon">
                   <ShoppingCartIcon
                     style={{ fill: "white" }}
                     fontSize="large"
@@ -76,9 +78,9 @@ function NavBar({ numberOfItemsInCart, fetchSearchValue, searchValue }) {
                 </Badge>
               </Link>
             ) : (
-              <Link to="/cart" onMouseEnter={()=>setCount(count + 1)}>
+              <Link to="/cart" onMouseEnter={() => setCount(count + 1)}>
                 <Badge
-                  badgeContent={numberOfItemsInCart} //TO ADD the number of items in cart
+                  badgeContent={nbOrder} //TO ADD the number of items in cart
                   color="secondary"
                   className="cart__icon"
                 >

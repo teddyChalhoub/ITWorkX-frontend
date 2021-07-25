@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./cart-page.css";
 import Cart from "../../components/cart/cart";
 import Loading from "../../components/loading/loading";
 import PrimaryFooter from "../../components/primaryFooter/PrimaryFooter";
 import axios from "axios";
+import { CountContext } from "../../utils/countContext";
 
 const CartPage = () => {
   const [count, setCount] = useState(0);
@@ -13,6 +14,8 @@ const CartPage = () => {
   const [error, isError] = useState(false);
   const [subTotal, setSubtotal] = useState(0);
   const [delivery, setDelivery] = useState(10);
+
+  const { nbOrder, setNbOrder } = useContext(CountContext);
 
   const handleProductId = (value) => {
     handleDelete(value);
@@ -34,6 +37,7 @@ const CartPage = () => {
         "nbOrders",
         parseInt(localStorage.getItem("nbOrders")) - 1
       );
+      setNbOrder(localStorage.getItem("nbOrders"));
       setCount(count + 1);
       alert("deleted from cart successfully");
     } catch (err) {
@@ -49,8 +53,7 @@ const CartPage = () => {
     try {
       const response = await axios.get("http://localhost:5000/order", {
         headers: {
-          "auth-token":
-            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGZjMzRhMWZiMjk5YjYyZjA1MzdiZGIiLCJpYXQiOjE2MjcxNDI3MTAsImV4cCI6MTYyNzc0NzUxMH0.pXJ5_WoCJSq9R3fxJuU6xo1_Ry03ISwczPEFHDnSqg0",
+          "auth-token": localStorage.getItem("token"),
         },
       });
 

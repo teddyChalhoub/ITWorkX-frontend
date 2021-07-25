@@ -16,49 +16,55 @@ import SignIn from "./pages/signIn/SignIn";
 import aboutUs from "./pages/aboutUs/AboutUs";
 import Service from "./pages/service/service-page";
 import Cart from "./pages/cart/crat-page";
+import { CountContext } from "./utils/countContext";
 
 const App = () => {
   const [searchValue, setSearchValue] = useState("");
-  const [nbOrder, setNbOrder] = useState(0);
+  const [nbOrder, setNbOrder] = useState(
+    localStorage.getItem("nbOrders") === null ||
+      localStorage.getItem("nbOrders") < 0
+      ? 0
+      : localStorage.getItem("nbOrders")
+  );
+
   const fetchSearchValue = (value) => {
     setSearchValue(value);
   };
 
-  useEffect(() => {
-    setNbOrder(parseInt(localStorage.getItem("nbOrders")));
-  }, [nbOrder]);
   return (
-    <Router>
-      <div className="App">
-        <Router>
-          <NavBar
-            searchValue={searchValue}
-            fetchSearchValue={fetchSearchValue}
-          />
-          <Switch>
-            <Route path="/" component={Home} exact />
-            <Route
-              path="/store"
-              render={(props) => {
-                return <StorePage {...props} searchValue={searchValue} />;
-              }}
-              exact
+    <CountContext.Provider value={{ nbOrder, setNbOrder }}>
+      <Router>
+        <div className="App">
+          <Router>
+            <NavBar
+              searchValue={searchValue}
+              fetchSearchValue={fetchSearchValue}
             />
-            <Route
-              path="/store/:title"
-              render={(props) => <ItemDisplay {...props} />}
-              exact
-            />
-            <Route path="/contact-us" component={ContactUs} exact />
-            <Route path="/services" component={Service} exact />
-            <Route path="/about-us" component={aboutUs} exact />
-            <Route path="/cart" component={Cart} exact />
-            <Route path="/log-in" component={SignIn} exact />
-            <Route path="/sign-up" component={SignUp} exact />
-          </Switch>
-        </Router>
-      </div>
-    </Router>
+            <Switch>
+              <Route path="/" component={Home} exact />
+              <Route
+                path="/store"
+                render={(props) => {
+                  return <StorePage {...props} searchValue={searchValue} />;
+                }}
+                exact
+              />
+              <Route
+                path="/store/:title"
+                render={(props) => <ItemDisplay {...props} />}
+                exact
+              />
+              <Route path="/contact-us" component={ContactUs} exact />
+              <Route path="/services" component={Service} exact />
+              <Route path="/about-us" component={aboutUs} exact />
+              <Route path="/cart" component={Cart} exact />
+              <Route path="/log-in" component={SignIn} exact />
+              <Route path="/sign-up" component={SignUp} exact />
+            </Switch>
+          </Router>
+        </div>
+      </Router>
+    </CountContext.Provider>
   );
 };
 
