@@ -30,13 +30,11 @@ const SignIn = (props) => {
   };
 
   const handleEmailValue = (event) => {
-    console.log("email", event.target.value);
     event.preventDefault();
     setEmail(event.target.value);
   };
 
   const handlePasswordValue = (event) => {
-    console.log("password", event.target.value);
     event.preventDefault();
     setPassword(event.target.value);
   };

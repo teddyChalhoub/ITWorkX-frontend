@@ -50,3 +50,7 @@
   border-radius: 20px;
   border: 0;
 }
+
+.border-red {
+  border: 0.1rem solid red !important;
+}
