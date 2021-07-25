@@ -73,7 +73,7 @@ function NavBar({ numberOfItemsInCart, fetchSearchValue, searchValue }) {
               onMouseLeave={handleMouseLeave}
               className="app__user__icon"
             >
-              <Link to="/picture">
+              <Link>
                 <AccountCircleIcon
                   className="user__icon"
                   style={{ fill: "white" }}
