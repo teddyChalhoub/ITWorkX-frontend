@@ -68,7 +68,6 @@ function NavBar({ numberOfItemsInCart, fetchSearchValue, searchValue }) {
             {localStorage.getItem("token") === null ? (
               <Link
                 onClick={handleCartNav}
-                onMouseEnter={() => setCount(count + 1)}
               >
                 <Badge color="secondary" className="cart__icon">
                   <ShoppingCartIcon
@@ -78,7 +77,7 @@ function NavBar({ numberOfItemsInCart, fetchSearchValue, searchValue }) {
                 </Badge>
               </Link>
             ) : (
-              <Link to="/cart" onMouseEnter={() => setCount(count + 1)}>
+              <Link to="/cart">
                 <Badge
                   badgeContent={nbOrder} //TO ADD the number of items in cart
                   color="secondary"

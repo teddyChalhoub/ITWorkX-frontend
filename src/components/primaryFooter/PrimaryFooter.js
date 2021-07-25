@@ -1,6 +1,6 @@
 import React from "react";
 import "./PrimaryFooter.css";
-import logo from "./logo.png";
+import logo from "../NavBar/LOGO.png";
 
 export default function primaryFooter() {
   return (
