@@ -1,6 +1,7 @@
 .team {
   width: 60%;
   padding: 1rem;
+  margin: 0 auto;
 }
 
 .img-display img {

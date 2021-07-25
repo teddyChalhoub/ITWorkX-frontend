@@ -1,45 +1,61 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
-*{
-    font-family: 'Playfair Display', serif;
-  } 
-.first-para {
-    width: 90%;
-    padding-left: 90px;
-    padding-top: 40px;
-}  
-.first-para h1{
-    font-size: 40px;
+.container__aboutUs {
+  width: 90%;
+  text-align: center;
+  margin: 1rem auto;
 }
-.first-para p{
-    padding-top: 30px;
-    font-size: 20px;
-    padding-bottom: 40px;
+.first-para,
+.second-para,
+.components,
+.fourth-para {
+  background-color: white;
+  border-radius: 0.5rem;
 }
-.container-second{
-    display: grid;
-    grid-template-columns: 50% 50%;
-    width: 90%;
-    padding-top: 100px;
+
+.first-para,
+.components {
+  padding: 1rem;
+}
+
+.second-para,
+.fourth-para,
+.components {
+    margin-top: 1rem;
+}
+
+.first-para h1 {
+  font-size: 40px;
+}
+.first-para p {
+  font-size: 20px;
+}
+
+.container-second {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.image-second {
+  flex: 50%;
 }
 .image-second img {
-    width: 70%;
-    margin-left: 80px;
-    border-radius: 10px;
+  width: 100%;
+  height: 100%;
+}
+
+.left img {
+  border-top-left-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+}
+.right img {
+  border-top-right-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
 }
 .text-second {
-    font-size: 20px;
-    margin-right: -40px;
-    
+  padding: 1rem;
+  flex: 47.2%;
+  font-size: 20px;
 }
 .components {
-    margin-top: 60px;
-    display: flex;
-padding-left:9rem;
-    /* flex-wrap: wrap; */
-    /* flex-direction: co; */
-    /* justify-content: center; */
-}
-.container-bottom-second{
-    margin: 0 auto ;
-    padding-bottom: 4rem;
+  display: flex;
+  padding: 0 2rem;
 }
