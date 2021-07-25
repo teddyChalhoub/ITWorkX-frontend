@@ -2,7 +2,13 @@
   text-align: center;
 }
 
-.sign_up input{
+.sign_up .form-sign-up {
+  background: rgb(220, 220, 220, 0.5);
+  margin: 2rem 0;
+  padding: 1rem;
+}
+
+.sign_up input {
   width: 40%;
   padding: 12px 20px;
   margin: 8px 0;
@@ -10,16 +16,22 @@
   border: 1px solid black;
   border-radius: 10px;
   box-sizing: border-box;
+  border: 0;
 }
-.sign_up p{
-  font-size: 50px;
-}
-.note input{
-  line-height: 100px;
 
-} 
+.sign_up input:focus {
+  outline: none;
+}
+
+.sign_up p {
+  font-size: 50px;
+  margin-top: 0;
+}
+.note input {
+  line-height: 100px;
+}
 .sign_up .button {
-  background-color:black;
+  background-color: black;
   border: none;
   color: white;
   padding: 15px 32px;
@@ -32,14 +44,9 @@
   width: 10%;
   border-radius: 10px;
 }
-.sign_up input[type='checkbox'] {
-  width:30px;
-  height:30px;
-  background:white;
-  border-radius:20px;
-  border:2px solid #555;
+.sign_up input[type="checkbox"] {
+  width: 30px;
+  background: white;
+  border-radius: 20px;
+  border: 0;
 }
-.signup-checkbox{
-  display: inline-table;
-}
-
