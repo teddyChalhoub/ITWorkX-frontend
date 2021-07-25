@@ -153,7 +153,7 @@ const SignUp = (props) => {
             </label>
           </div>
         </div>
-        <button>Sign Up </button>
+        <button className="button">Sign Up </button>
       </form>
       <SecondaryFooter />
     </div>

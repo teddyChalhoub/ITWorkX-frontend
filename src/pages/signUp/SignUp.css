@@ -54,3 +54,6 @@
 .border-red {
   border: 0.1rem solid red !important;
 }
+.signup_checkbox {
+  margin: 1rem;
+}
