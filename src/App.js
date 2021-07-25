@@ -13,14 +13,9 @@ import {
 import Home from "./pages/home/Home.js";
 import SignUp from "./pages/signUp/SignUp";
 import SignIn from "./pages/signIn/SignIn";
-import secondaryFooter from "./components/secondaryFooter/SecondaryFooter";
-import primaryFooter from "./components/primaryFooter/PrimaryFooter";
 import aboutUs from "./pages/aboutUs/AboutUs";
-import TeamSection from "./components/teamSection/TeamSection";
 import Service from "./pages/service/service-page";
-
 import Cart from "./pages/cart/crat-page";
-import useFetch from "./utils/useFetch.js";
 
 const App = () => {
   const [searchValue, setSearchValue] = useState("");
@@ -37,7 +32,6 @@ const App = () => {
       <div className="App">
         <Router>
           <NavBar
-            numberOfItemsInCart={nbOrder}
             searchValue={searchValue}
             fetchSearchValue={fetchSearchValue}
           />

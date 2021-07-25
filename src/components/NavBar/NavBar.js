@@ -27,6 +27,10 @@ function NavBar({ numberOfItemsInCart, fetchSearchValue, searchValue }) {
     localStorage.removeItem("token");
   };
 
+  const handleCartNav = () => {
+    alert("Only logged in are allowed");
+  };
+
   return (
     <div>
       <header>
@@ -57,16 +61,33 @@ function NavBar({ numberOfItemsInCart, fetchSearchValue, searchValue }) {
             <Link className="about-us links" to="/about-us">
               About us{" "}
             </Link>
-
-            <Link to="/cart">
-              <Badge
-                badgeContent={numberOfItemsInCart} //TO ADD the number of items in cart
-                color="secondary"
-                className="cart__icon"
-              >
-                <ShoppingCartIcon style={{ fill: "white" }} fontSize="large" />
-              </Badge>
-            </Link>
+            {localStorage.getItem("token") === null ? (
+              <Link onClick={handleCartNav}>
+                <Badge
+                  badgeContent={numberOfItemsInCart} //TO ADD the number of items in cart
+                  color="secondary"
+                  className="cart__icon"
+                >
+                  <ShoppingCartIcon
+                    style={{ fill: "white" }}
+                    fontSize="large"
+                  />
+                </Badge>
+              </Link>
+            ) : (
+              <Link to="/cart">
+                <Badge
+                  badgeContent={numberOfItemsInCart} //TO ADD the number of items in cart
+                  color="secondary"
+                  className="cart__icon"
+                >
+                  <ShoppingCartIcon
+                    style={{ fill: "white" }}
+                    fontSize="large"
+                  />
+                </Badge>
+              </Link>
+            )}
 
             <div
               onMouseEnter={handleMouseEnter}

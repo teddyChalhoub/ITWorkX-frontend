@@ -15,6 +15,7 @@ const Store = ({ searchValue }) => {
     message,
     error,
   } = useFetch("http://localhost:5000/category");
+  
 
   const [categories, setCategories] = useState([]);
   const [subCategories, setSubCategories] = useState([]);
