@@ -1,17 +1,6 @@
 import React ,{useState}from 'react'
 import './SignUp.css';
-import SecondaryFooter from '../components/secondaryFooter/SecondaryFooter';
-
-//  let firstPass = document.getElementsById("password");
-//  let secondPass = document.getElementById("passwordAuth");
-//  var button_1 = document.querySelector("button");
-
-//  button_1.addEventListener("click", () =>
-//  {
-//     if (firstPass.value !== secondPass.value){
-//         document.getElementsByClassName("auth").innerHTML = "Password doesn't match";
-//     }
-// });
+import SecondaryFooter from '../../components/secondaryFooter/SecondaryFooter';
 
 
 export default function SignUp() {

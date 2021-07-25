@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./service-page.css";
 import ServiceDisplay from "../../components/ServiceDisplay/serviceDisplay1";
 import ServiceCard from "../../components/ServiceDisplay/serviceCard";
+import PrimaryFooter from "../../components/primaryFooter/PrimaryFooter";
 import axios from "axios";
 
 const Service = () => {
@@ -17,7 +18,6 @@ const Service = () => {
     setService(data);
   };
 
-
   const fetchServices = async () => {
     setLoading(true);
     setError(false);
@@ -31,18 +31,14 @@ const Service = () => {
         throw new Error(data.message);
       }
       setServiceData(data.data);
-      setLoading(false); 
-      setError(false);       
-      setMessage('');
-
-  
-    } catch (e) {   
+      setLoading(false);
+      setError(false);
+      setMessage("");
+    } catch (e) {
       setLoading(false);
       setError(true);
       setMessage(e.message);
       setServiceData([]);
-
-  
     }
   };
 
@@ -87,6 +83,7 @@ const Service = () => {
             })}
         </div>
       )}
+      <PrimaryFooter />
     </>
   );
 };

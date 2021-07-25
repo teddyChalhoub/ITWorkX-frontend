@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./cart-page.css";
 import Cart from "../../components/cart/cart";
 import Loading from "../../components/loading/loading";
+import PrimaryFooter from "../../components/primaryFooter/PrimaryFooter";
 import axios from "axios";
 
 const CartPage = () => {
@@ -71,9 +72,7 @@ const CartPage = () => {
   const handleTotalPrice = () => {
     let priceSum = 0;
     if (products && products.orderItem !== undefined) {
-
       products.orderItem.map((orderItem) => {
-
         priceSum = priceSum + orderItem.totalPrice;
       });
       setSubtotal(priceSum);
@@ -81,7 +80,6 @@ const CartPage = () => {
   };
 
   useEffect(() => {
-
     handleDisplayData();
     handleTotalPrice();
   }, [count]);
@@ -91,71 +89,73 @@ const CartPage = () => {
   }, [products]);
 
   return (
-    <div className="cart__container">
-      <div className="cart__container__product__details">
-        <p>My Cart</p>
-        <div className="cart__titles">
-          <p>Product</p>
-          <p>Quantity</p>
-          <p>Price</p>
-          <p></p>
+    <>
+      <div className="cart__container">
+        <div className="cart__container__product__details">
+          <p>My Cart</p>
+          <div className="cart__titles">
+            <p>Product</p>
+            <p>Quantity</p>
+            <p>Price</p>
+            <p></p>
+          </div>
+          {loading ? (
+            <Loading />
+          ) : error ? (
+            <div>{message}</div>
+          ) : (
+            products &&
+            products.orderItem &&
+            products.orderItem.map((cart) => {
+              return (
+                cart.products && (
+                  <Cart
+                    handleProductId={handleProductId}
+                    productId={cart._id}
+                    productTitle={cart.products.title}
+                    productPrice={cart.products.price}
+                    orderQuantity={cart.quantity}
+                    orderTotalPrice={cart.totalPrice}
+                  />
+                )
+              );
+            })
+          )}
         </div>
-        {loading ? (
-          <Loading />
-        ) : error ? (
-          <div>{message}</div>
-        ) : (
-          products &&
-          products.orderItem &&
-          products.orderItem.map((cart) => {
+        <div className="cart__container__payment">
+          <p>Price Details</p>
+          <div className="cart__container__payment--subTotal">
+            <p>Subtotal</p>
+            <p>{subTotal} $</p>
+          </div>
+          <div className="cart__container__payment--delivery">
+            <p>Delivery</p>
+            <p>{delivery} $</p>
+          </div>
+          <div className="cart__container__payment--orderTotal">
+            <p>Total</p>
+            <p>{subTotal + delivery}$</p>
+          </div>
+          <button className="cart__container__btn">Place Order</button>
 
-            return (
-              cart.products && (
-                <Cart
-                  handleProductId={handleProductId}
-                  productId={cart._id}
-                  productTitle={cart.products.title}
-                  productPrice={cart.products.price}
-                  orderQuantity={cart.quantity}
-                  orderTotalPrice={cart.totalPrice}
-                />
-              )
-            );
-          })
-        )}
+          <div className="cart__payment__method--cash">
+            <p>Payment Method</p>
+            <label className="payment" for="cash">
+              Cash on delivery
+              <input type="radio" id="cash" name="payment" />
+              <span className="checkmark"></span>
+            </label>
+
+            <label className="payment" for="omt">
+              OMT
+              <input type="radio" id="omt" name="payment" />
+              <span className="checkmark"></span>
+            </label>
+          </div>
+        </div>
       </div>
-      <div className="cart__container__payment">
-        <p>Price Details</p>
-        <div className="cart__container__payment--subTotal">
-          <p>Subtotal</p>
-          <p>{subTotal} $</p>
-        </div>
-        <div className="cart__container__payment--delivery">
-          <p>Delivery</p>
-          <p>{delivery} $</p>
-        </div>
-        <div className="cart__container__payment--orderTotal">
-          <p>Total</p>
-          <p>{subTotal + delivery}$</p>
-        </div>
-        <button className="cart__container__btn">Place Order</button>
-
-        <div className="cart__payment__method--cash">
-          <p>Payment Method</p>
-          <label className="payment" for="cash">
-            Cash on delivery
-            <input type="radio" id="cash" name="payment" />
-            <span className="checkmark"></span>
-          </label>
-
-          <label className="payment" for="omt">
-            OMT
-            <input type="radio" id="omt" name="payment" />
-            <span className="checkmark"></span>
-          </label>
-        </div>
-      </div>
-    </div>
+      <PrimaryFooter />
+    </>
   );
 };
 

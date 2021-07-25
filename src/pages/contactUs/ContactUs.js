@@ -3,6 +3,7 @@ import "./Contact-us.css";
 import { ImFacebook2 } from "react-icons/im";
 import { GrTwitter, GrInstagram, GrLinkedin, GrYoutube } from "react-icons/gr";
 import Grid from "@material-ui/core/Grid";
+import PrimaryFooter from "../../components/primaryFooter/PrimaryFooter";
 import axios from "axios";
 
 const ContactUs = () => {
@@ -185,6 +186,7 @@ const ContactUs = () => {
           </Grid>
         </div>
       </div>
+      <PrimaryFooter />
     </div>
   );
 };

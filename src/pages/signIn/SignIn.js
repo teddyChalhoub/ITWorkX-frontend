@@ -1,7 +1,7 @@
 import React from 'react'
 import {Link} from 'react-router-dom';
 import './SignIn.css';
-import SecondaryFooter from '../components/secondaryFooter/SecondaryFooter';
+import SecondaryFooter from '../../components/secondaryFooter/SecondaryFooter';
 
 
 

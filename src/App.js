@@ -11,8 +11,8 @@ import {
   withRouter,
 } from "react-router-dom";
 import Home from "./pages/home/Home.js";
-import SignUp from './signUp/SignUp'
-import SignIn from './signIn/SignIn';
+import SignUp from './pages/signUp/SignUp'
+import SignIn from './pages/signIn/SignIn';
 import secondaryFooter from './components/secondaryFooter/SecondaryFooter';
 import primaryFooter from './components/primaryFooter/PrimaryFooter'; 
 import aboutUs from './pages/aboutUs/AboutUs';
@@ -60,19 +60,11 @@ const App = () => {
           <Route path="/services" component={Service} exact />
           <Route path="/about-us" component={aboutUs} exact />
           <Route path="/cart" component={Cart} exact />
+          <Route path="/picture" component={SignIn}/>
           <Route path="/log-in" component={SignIn} exact />
           <Route path="/sign-up" component={SignUp} exact />
         </Switch>
       </Router>
-
-      {/* <Home /> */}
-      {/* <Router>
-        <ContactUs>
-          <Switch>
-            <Route path="https://www.facebook.com/" />
-          </Switch>
-        </ContactUs>
-      </Router> */}
     </div>
     </Router>
   );
