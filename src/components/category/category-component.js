@@ -25,6 +25,7 @@ const SubCategories = (props) => {
                 key={index}
                 className="categories__left-border"
                 onMouseEnter={() => {
+                  setSubcategories(category.subCategory);
                   setIsShown({
                     visibility: "block",
                   });
@@ -36,38 +37,30 @@ const SubCategories = (props) => {
                 <div onClick={(e) => handleCategoryName(e, category.category)}>
                   {category.category}
                 </div>
-
-                <div
-                  className="subCategory__display"
-                  onMouseEnter={() =>
-                    setIsShown({
-                      visibility: "block",
-                    })
-                  }
-                  onMouseLeave={() => setIsShown({ visibility: "none" })}
-                  style={{
-                    display: isShown.visibility,
-                  }}
-                >
-                  {props.subCategories &&
-                    props.subCategories.map((subCategory) => {
-                      console.log(subCategory.parent_category);
-                      console.log(category.category);
-                      if (subCategory.parent_category === category.category) {
-                        console.log("entered");
-                        return (
-                          <h3
-                            onClick={(e) =>
-                              props.handleCategoryProduct(subCategory.category)
-                            }
-                          >
-                            {subCategory.category}
-                          </h3>
-                        );
-                      }
-                    })}
-                </div>
               </div>
+            );
+          })}
+      </div>
+      <div
+        className="subCategory__display"
+        onMouseEnter={() =>
+          setIsShown({
+            visibility: "block",
+          })
+        }
+        onMouseLeave={() => setIsShown({ visibility: "none" })}
+        style={{
+          display: isShown.visibility,
+        }}
+      >
+        {subCategories &&
+          subCategories.map((subCategory) => {
+            return (
+              <h3
+                onClick={(e) => props.handleCategoryProduct(subCategory.name)}
+              >
+                {subCategory.name}
+              </h3>
             );
           })}
       </div>

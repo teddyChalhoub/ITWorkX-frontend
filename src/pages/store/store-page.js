@@ -33,18 +33,22 @@ const Store = ({ searchValue }) => {
   const storeCategory = (value) => {
     value.map((category) => {
       if (category.parent_category !== undefined) {
-        setSubCategories((response) => [
+        setCategories((response) => [
           ...response,
           {
-            category: category.name,
-            parent_category: category.parent_category.name,
+            category:category.name,
+            subCategory: [{
+              name: category.name,
+              parent_category: category.parent_category.name,
+            }],
           },
         ]);
       } else {
         setCategories((response) => [
           ...response,
           {
-            category: category.name,
+            category:category.name,
+            subCategory: [],
           },
         ]);
       }
