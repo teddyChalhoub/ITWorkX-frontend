@@ -78,7 +78,7 @@ const SignIn = (props) => {
             </div>
             <button className="sign-in-btn">Sign In</button>
             <p>Not a member yet ?</p>
-            <Link to="/signup">
+            <Link to="/sign-up">
               <p>Sign Up</p>
             </Link>
           </div>
