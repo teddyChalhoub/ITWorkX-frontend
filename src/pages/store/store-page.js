@@ -7,6 +7,7 @@ import { Route, Link, Switch, withRouter } from "react-router-dom";
 import Slider from "../../components/ProductSlider/Slider2";
 import Loading from "../../components/loading/loading";
 import PrimaryFooter from "../../components/primaryFooter/PrimaryFooter";
+import { CompassCalibrationOutlined } from "@material-ui/icons";
 
 const Store = ({ searchValue }) => {
   const {
@@ -32,26 +33,23 @@ const Store = ({ searchValue }) => {
 
   const storeCategory = (value) => {
     value.map((category) => {
-      if (category.parent_category !== undefined) {
-        setCategories((response) => [
-          ...response,
-          {
-            category:category.name,
-            subCategory: [{
-              name: category.name,
-              parent_category: category.parent_category.name,
-            }],
-          },
-        ]);
-      } else {
-        setCategories((response) => [
-          ...response,
-          {
-            category:category.name,
-            subCategory: [],
-          },
-        ]);
-      }
+      value.map((category2) => {
+        if (category.name === category2.name) {
+          
+          setCategories((response) => [
+            ...response,
+            {
+              category: category.parent_category.name,
+              subCategory: [
+                {
+                  name: category.name,
+                  parent_category: category.parent_category.name,
+                },
+              ],
+            },
+          ]);
+        }
+      });
     });
   };
 

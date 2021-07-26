@@ -7,12 +7,25 @@ const SubCategories = (props) => {
   const [isShown, setIsShown] = useState({
     visibility: "none",
   });
+  const [categories, setCategories] = useState([]);
   const [subCategories, setSubcategories] = useState([]);
 
   const handleCategoryName = (e, value) => {
     e.preventDefault();
     props.handleCategoryProduct(value);
   };
+
+  const handleCategoriesArray = () => {
+    const array = props.categories.filter( (item, pos, self) => {
+      console.log(self.indexOf(item) == pos);
+      return self.indexOf(item) !== pos;
+    });
+    console.log(array);
+  };
+
+  useEffect(() => {
+    handleCategoriesArray();
+  }, []);
 
   return (
     <div className="categories">
