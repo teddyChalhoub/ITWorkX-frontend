@@ -55,7 +55,13 @@ const App = () => {
                 exact
               />
               <Route path="/contact-us" component={ContactUs} exact />
-              <Route path="/services" component={Service} exact />
+              <Route
+                path="/services"
+                render={(props) => {
+                  return <Service {...props} searchValue={searchValue} />;
+                }}
+                exact
+              />
               <Route path="/about-us" component={aboutUs} exact />
               <Route path="/cart" component={Cart} exact />
               <Route path="/log-in" component={SignIn} exact />

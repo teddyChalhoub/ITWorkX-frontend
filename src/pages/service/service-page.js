@@ -6,7 +6,7 @@ import PrimaryFooter from "../../components/primaryFooter/PrimaryFooter";
 import Loading from "../../components/loading/loading";
 import axios from "axios";
 
-const Service = () => {
+const Service = ({ searchValue }) => {
   const [visible, isVisible] = useState(false);
   const [service, setService] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -58,19 +58,27 @@ const Service = () => {
       ) : (
         <div className="service_wrapper">
           <p className="p_first">
-          Emerging company and specialize in offer 360 degree web and digital marketing solutions to make your company become a brand in the online marketing world. From website design, web development, content marketing, our team of mavens come with solutions that bring digital revolution. Just name the services you need for your online business and we will deliver you excellent solution in a unique style.
+            Emerging company and specialize in offer 360 degree web and digital
+            marketing solutions to make your company become a brand in the
+            online marketing world. From website design, web development,
+            content marketing, our team of mavens come with solutions that bring
+            digital revolution. Just name the services you need for your online
+            business and we will deliver you excellent solution in a unique
+            style.
           </p>
 
           {serviceData &&
-            serviceData.map((res, index) => {
-              return (
-                <ServiceCard
-                  response={res}
-                  second={index % 2 == 0}
-                  handleVisibilityAndData={handleVisibilityAndData}
-                />
-              );
-            })}
+            serviceData
+              .filter((value) => new RegExp(searchValue).test(value.title))
+              .map((res, index) => {
+                return (
+                  <ServiceCard
+                    response={res}
+                    second={index % 2 == 0}
+                    handleVisibilityAndData={handleVisibilityAndData}
+                  />
+                );
+              })}
         </div>
       )}
       <PrimaryFooter />
