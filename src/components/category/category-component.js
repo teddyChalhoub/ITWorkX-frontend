@@ -41,20 +41,20 @@ const SubCategories = (props) => {
             );
           })}
       </div>
-      <div
-        className="subCategory__display"
-        onMouseEnter={() =>
-          setIsShown({
-            visibility: "block",
-          })
-        }
-        onMouseLeave={() => setIsShown({ visibility: "none" })}
-        style={{
-          display: isShown.visibility,
-        }}
-      >
-        {subCategories &&
-          subCategories.map((subCategory) => {
+      {subCategories && (
+        <div
+          className="subCategory__display"
+          onMouseEnter={() =>
+            setIsShown({
+              visibility: "block",
+            })
+          }
+          onMouseLeave={() => setIsShown({ visibility: "none" })}
+          style={{
+            display: isShown.visibility,
+          }}
+        >
+          {subCategories.map((subCategory) => {
             return (
               <h3
                 onClick={(e) => props.handleCategoryProduct(subCategory.name)}
@@ -63,7 +63,8 @@ const SubCategories = (props) => {
               </h3>
             );
           })}
-      </div>
+        </div>
+      )}
     </div>
   );
 };
