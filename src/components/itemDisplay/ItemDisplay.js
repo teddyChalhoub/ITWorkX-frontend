@@ -73,7 +73,10 @@ const ItemDisplay = () => {
   const handleTotalPrice = () => {
     if (parseInt(product.discount) !== undefined) {
       setTotalPrice(
-        product.price * (parseInt(product.discount) / 100) * quantity
+        parseInt(product.price) * quantity -
+          parseInt(product.price) *
+            (parseInt(product.discount) / 100) *
+            quantity
       );
     } else {
       setTotalPrice(product.price * quantity);
@@ -131,9 +134,10 @@ const ItemDisplay = () => {
                       <div className="item__details-card-total-price">
                         <p>Total Price</p>
                         <p>
-                          {parseInt(product.price) *
-                            (parseInt(product.discount) / 100) *
-                            quantity}
+                          {parseInt(product.price) * quantity -
+                            parseInt(product.price) *
+                              (parseInt(product.discount) / 100) *
+                              quantity}
                           $
                         </p>
                       </div>
