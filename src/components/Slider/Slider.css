@@ -32,7 +32,7 @@
   position: absolute;
   top:70%;
   width: 59.25%;
-  height: 40%;
+  height: 100%;
   left: -9%;
   background: white;
   z-index: 1;
@@ -42,7 +42,7 @@
   position: absolute;
   top: 70%;
   width: 59.25%;
-  height: 40%;
+  height: 100%;
   right: -9%;
   background: white;
   z-index: 1;
