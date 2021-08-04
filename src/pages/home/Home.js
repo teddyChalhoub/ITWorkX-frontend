@@ -4,15 +4,21 @@ import AboutBusiness from "../../components/AboutBusiness/AboutBusiness";
 import DigitalSolution from "../../components/DigitalSolution/DigitalSolution";
 import SignIn from "../../components/LoginButtons/SignIn";
 import HardwareSolution from "../../components/hardwareSolution/HardwareSolution";
+import PrimaryFooter from "../../components/primaryFooter/PrimaryFooter";
+import "./Home.css";
 
 const Home = () => {
   return (
-    <div>
+    <div className="home__container">
       <Slider />
-      <AboutBusiness />
-      <SignIn />
+      <div className="home__about_business">
+        <AboutBusiness />
+      </div>
       <DigitalSolution />
-      <HardwareSolution />
+      <div className="home__hardware-solution">
+        <HardwareSolution />
+      </div>
+      <PrimaryFooter />
     </div>
   );
 };

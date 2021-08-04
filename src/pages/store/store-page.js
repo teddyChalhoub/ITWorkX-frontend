@@ -6,6 +6,7 @@ import useFetch from "../../utils/useFetch.js";
 import { Route, Link, Switch, withRouter } from "react-router-dom";
 import Slider from "../../components/ProductSlider/Slider2";
 import Loading from "../../components/loading/loading";
+import PrimaryFooter from "../../components/primaryFooter/PrimaryFooter";
 
 const Store = ({ searchValue }) => {
   const {
@@ -14,6 +15,7 @@ const Store = ({ searchValue }) => {
     message,
     error,
   } = useFetch("http://localhost:5000/category");
+  
 
   const [categories, setCategories] = useState([]);
   const [subCategories, setSubCategories] = useState([]);
@@ -134,9 +136,7 @@ const Store = ({ searchValue }) => {
                 <p>Filter</p>
                 <a onClick={storeProducts}>All Products</a>
                 <a onClick={handleNewItemProducts}>New Products</a>
-                <a onClick={handleDiscountedItemProducts}>
-                  Discounted Products
-                </a>
+                <a onClick={handleDiscountedItemProducts}>Offers</a>
               </div>
             </div>
 
@@ -150,16 +150,20 @@ const Store = ({ searchValue }) => {
                       <div key={product._id} className="store__page-each-card">
                         {product.images.length > 0 ? (
                           <Card
+                            product_id={product._id}
                             newItem={product.newItem}
                             image={product.images[0].url}
                             title={product.title}
                             price={product.price}
+                            discount={product.discount}
                           />
                         ) : (
                           <Card
+                            product_id={product._id}
                             newItem={product.newItem}
                             title={product.title}
                             price={product.price}
+                            discount={product.discount}
                           />
                         )}
                       </div>
@@ -169,6 +173,7 @@ const Store = ({ searchValue }) => {
           </div>
         </>
       )}
+      <PrimaryFooter />
     </>
   );
 };

@@ -3,6 +3,8 @@ import "./Contact-us.css";
 import { ImFacebook2 } from "react-icons/im";
 import { GrTwitter, GrInstagram, GrLinkedin, GrYoutube } from "react-icons/gr";
 import Grid from "@material-ui/core/Grid";
+import PrimaryFooter from "../../components/primaryFooter/PrimaryFooter";
+import axios from "axios";
 
 const ContactUs = () => {
   const [name, setName] = useState("");
@@ -10,16 +12,27 @@ const ContactUs = () => {
   const [email, setEmail] = useState("");
   const [topic, setTopic] = useState("");
   const [message, setMessage] = useState("");
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const emailData = {
-      name,
-      mobile,
-      email,
-      topic,
-      message,
+      name: name,
+      mobile: mobile,
+      email: email,
+      topic: topic,
+      message: message,
     };
     console.log("submitted values", emailData);
+    try {
+      const response = await axios.post(
+        "http://localhost:5000/NodeMailer/send_mail",
+        emailData
+      );
+      if (!response.data.success) throw new Error(response.data.message);
+      alert(response.data.message);
+    } catch (error) {
+      alert(error.message);
+    }
+
     // @TODO: send data email to backend
   };
   const handleNameChange = (e) => {
@@ -140,12 +153,12 @@ const ContactUs = () => {
                 <div className="address">
                   <h3>Lebanon</h3>
                   <p>Phone number: +961 3 123 456</p>
-                  <p>Adress: Kaslik, Lebanon</p>
+                  <p>Address: Kaslik, Lebanon</p>
                 </div>
                 <div className="address">
                   <h3>Saudi Arabia</h3>
                   <p>Phone number: +966 3 123 456</p>
-                  <p>Adress: Riyadh, KSA</p>
+                  <p>Address: Riyadh, KSA</p>
                 </div>
                 <div className="app__follow-us">
                   <h3 className="follow-us">Follow us</h3>
@@ -173,6 +186,7 @@ const ContactUs = () => {
           </Grid>
         </div>
       </div>
+      <PrimaryFooter />
     </div>
   );
 };

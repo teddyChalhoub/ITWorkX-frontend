@@ -28,6 +28,8 @@ const Slider = () => {
   };
   return (
     <div className="container-slider">
+      <div className="left__triangle"></div>
+      <div className="right__triangle"></div>
       {dataSlider.map((obj, index) => {
         return (
           <div

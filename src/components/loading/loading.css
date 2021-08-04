@@ -30,7 +30,7 @@
     width:0.7rem;
     height:0.7rem;
     border-radius: 50%;
-    background: rgb(92, 90, 90);
+    background: #334c4a;
     animation: animate  1s linear infinite;
     animation-delay: calc(0.1s * var(--i));
 }
